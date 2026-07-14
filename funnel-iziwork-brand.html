@@ -298,6 +298,75 @@
   .opp-factor .fd { font-size: 11px; line-height: 1.4; color: var(--ink-secondary); }
   .opp-factor.score { background: rgba(54,204,117,0.1); border-color: rgba(54,204,117,0.3); grid-column: span 3; }
   .opp-factor.score .fv { color: var(--green-dark); font-size: 17px; }
+
+  /* ---- wireframe prototype section ---- */
+  .wire-section { margin-top: 44px; }
+  .wire-head { margin-bottom: 20px; }
+  .wire-head h2 { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .wire-head p { font-size: 13px; line-height: 1.55; color: var(--ink-secondary); max-width: 78ch; margin: 0; }
+
+  .wire-block { margin-bottom: 32px; }
+  .wire-tag {
+    display: inline-flex; align-items: center; gap: 6px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--slate); background: var(--page); border: 1px dashed var(--hairline-strong, var(--slate));
+    border-radius: 6px; padding: 4px 9px; margin-bottom: 10px;
+  }
+  .wire-title { font-size: 15px; font-weight: 800; color: var(--ink); margin: 0 0 14px; }
+
+  .wire-canvas {
+    border: 2px dashed #C7CBDA; border-radius: 16px; background: #FBFBFD;
+    padding: 24px; overflow-x: auto;
+  }
+
+  /* candidate card mock */
+  .mock-card {
+    background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
+    padding: 16px 18px; max-width: 460px; box-shadow: 0 6px 18px -14px rgba(39,35,86,0.25);
+  }
+  .mock-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .mock-avatar { width: 40px; height: 40px; border-radius: 50%; background: #E4E3EC; flex: none; }
+  .mock-name { font-size: 14px; font-weight: 800; color: var(--ink); }
+  .mock-sub { font-size: 11.5px; color: var(--ink-muted); margin-top: 2px; }
+  .mock-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .mock-badge {
+    font-size: 11.5px; font-weight: 700; padding: 5px 10px; border-radius: 999px;
+    background: rgba(54,204,117,0.12); color: var(--green-dark); border: 1px solid rgba(54,204,117,0.3);
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .mock-badge.fragile { background: rgba(251,115,37,0.1); color: #B8500F; border-color: rgba(251,115,37,0.35); }
+  .mock-badge.off { background: #F1F1F5; color: var(--ink-muted); border-color: var(--hairline); text-decoration: line-through; }
+  .mock-actions { display: flex; gap: 10px; }
+  .mock-btn {
+    font-size: 12.5px; font-weight: 700; padding: 9px 16px; border-radius: 999px; border: none; cursor: default;
+  }
+  .mock-btn.primary { background: var(--green); color: #06301A; }
+  .mock-btn.ghost { background: #fff; color: var(--ink-secondary); border: 1px solid var(--hairline-strong, var(--slate)); }
+  .mock-btn.pressed { background: rgba(251,115,37,0.12); color: #B8500F; border: 1px solid rgba(251,115,37,0.4); }
+
+  .wire-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 50%; background: var(--indigo); color: #fff;
+    font-size: 9.5px; font-weight: 800; flex: none;
+  }
+
+  .wire-legend { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .wire-legend li { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; line-height: 1.5; color: var(--ink-secondary); }
+
+  .wire-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; min-width: 900px; }
+  .wire-step-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
+  .mock-motifs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .mock-motif {
+    font-size: 11px; font-weight: 600; padding: 5px 9px; border-radius: 8px;
+    background: #fff; border: 1px solid var(--hairline-strong, var(--slate)); color: var(--ink-secondary);
+  }
+  .mock-motif.selected { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+  .mock-toast {
+    background: rgba(54,204,117,0.1); border: 1px solid rgba(54,204,117,0.3); border-radius: 12px;
+    padding: 12px 14px; font-size: 12px; line-height: 1.5; color: #14532d;
+  }
+  .mock-toast b { display: block; margin-bottom: 3px; color: var(--green-dark); font-size: 12.5px; }
+  .mock-trace { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 10.5px; color: var(--ink-muted); }
 </style>
 
 <div class="wrap">
@@ -416,6 +485,103 @@
       injectés dans le score, pour rester arbitrables en comité produit.</p>
     </div>
     <div class="opp-list" id="opp-list"></div>
+  </div>
+
+  <div class="wire-section">
+    <div class="wire-head">
+      <h2>🧪 Prototype — Explicabilité du score de matching</h2>
+      <p>Traduction concrète de l'opportunité #5 du backlog (Score explicatif du matching) et de l'axe 2 de la
+      réflexion solutions : deux wireframes basse-fidélité pour valider la structure avant tout écran définitif —
+      l'affichage du score sur un profil recommandé, et le parcours de correction quand le recruteur refuse un
+      candidat fortement recommandé.</p>
+    </div>
+
+    <div class="wire-block">
+      <span class="wire-tag">◫ Wireframe A</span>
+      <p class="wire-title">Fiche candidat recommandée — score explicatif</p>
+      <div class="wire-canvas">
+        <div class="mock-card">
+          <div class="mock-row">
+            <div class="mock-avatar"></div>
+            <div>
+              <div class="mock-name">Karim B. — Cariste CACES 3 / 5</div>
+              <div class="mock-sub">Profil déjà actif · dernière mission il y a 2 mois</div>
+            </div>
+          </div>
+          <div class="mock-badges">
+            <span class="mock-badge">Dispo immédiate +30%</span>
+            <span class="mock-badge">CACES à jour +20%</span>
+            <span class="mock-badge">8 min du site +20%</span>
+            <span class="mock-badge fragile">Exp. 14 mois (donnée fragile) <span class="wire-num">1</span></span>
+          </div>
+          <div class="mock-actions">
+            <button class="mock-btn primary">Proposer au client</button>
+            <button class="mock-btn ghost">Refuser</button>
+          </div>
+        </div>
+        <ul class="wire-legend">
+          <li><span class="wire-num">2</span> Aucun pourcentage brut affiché seul : le score est toujours porté par ses facteurs constitutifs, en langage métier — décision déjà tranchée à l'axe 2.</li>
+          <li><span class="wire-num">1</span> Badge visuellement distinct quand la donnée sous-jacente est fragile ou ancienne — évite la sur-confiance du recruteur dans un facteur peu fiable.</li>
+          <li><span class="wire-num">3</span> Le bouton "Refuser" n'ouvre pas un formulaire séparé : il déclenche directement le wireframe B ci-dessous.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wire-block">
+      <span class="wire-tag">◫ Wireframe B</span>
+      <p class="wire-title">Parcours de correction — refus motivé</p>
+      <div class="wire-canvas">
+        <div class="wire-steps">
+          <div>
+            <div class="wire-step-label">1 · Clic sur Refuser</div>
+            <div class="mock-card" style="max-width:none;">
+              <div class="mock-row">
+                <div class="mock-avatar"></div>
+                <div>
+                  <div class="mock-name">Karim B.</div>
+                  <div class="mock-sub">Score 92% affiché</div>
+                </div>
+              </div>
+              <div class="mock-actions">
+                <button class="mock-btn ghost" style="opacity:.5;">Proposer au client</button>
+                <button class="mock-btn pressed">Refuser ✓</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="wire-step-label">2 · Correction en 1 tap</div>
+            <div class="mock-card" style="max-width:none;">
+              <div class="mock-badges">
+                <span class="mock-badge">☑ Dispo immédiate</span>
+                <span class="mock-badge off">☐ CACES à jour <span class="wire-num">1</span></span>
+                <span class="mock-badge">☑ 8 min du site</span>
+              </div>
+              <div class="mock-sub">Motif rapide <span class="wire-num">2</span></div>
+              <div class="mock-motifs">
+                <span class="mock-motif">Indispo réelle</span>
+                <span class="mock-motif selected">Mauvaise expérience passée</span>
+                <span class="mock-motif">Doublon</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="wire-step-label">3 · Boucle fermée</div>
+            <div class="mock-card" style="max-width:none;">
+              <div class="mock-toast">
+                <b>Merci — c'est pris en compte</b>
+                Ce retour ajuste le critère "CACES à jour" pour les prochaines missions similaires.
+              </div>
+              <div class="mock-trace">🔒 Trace conservée <span class="wire-num">3</span> — supervision humaine (AI Act art. 26)</div>
+            </div>
+          </div>
+        </div>
+        <ul class="wire-legend">
+          <li><span class="wire-num">1</span> Les mêmes badges de l'étape 1 réapparaissent pré-cochés : le recruteur décoche seulement celui qu'il juge faux, aucune ressaisie.</li>
+          <li><span class="wire-num">2</span> Un motif rapide en 1 tap (pas de champ libre obligatoire) — au-delà de 85% de score, ce mini-écran devient obligatoire avant confirmation (trace d'audit).</li>
+          <li><span class="wire-num">3</span> La boucle est fermée explicitement : le recruteur voit que sa correction a un effet, sinon il cesse de corriger et la boucle de feedback (axe 3) s'assèche.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -653,22 +819,22 @@
       strategic: { comp: [4, "C'est l'axe où l'avance actuelle d'Iziwork est la plus réelle"], client: [4, "Profils plus pertinents dès la première proposition"] }
     },
     {
-      rank: 3, tier: "high", title: "Alerte de renouvellement automatique", step: "Renouvellement (hors funnel officiel)",
-      desc: "Détecter automatiquement l'approche de l'échéance d'une mission (J-2) et pré-remplir l'avenant de renouvellement, plutôt que de compter sur une initiative manuelle.",
-      example: "Deux jours avant la fin de la mission de Karim, Léa reçoit une alerte avec l'avenant pré-rempli, prêt à valider en un clic si Sophie souhaite prolonger.",
-      roiLabel: "Quick win", roiSub: "Effort le plus faible du backlog",
-      rice: { r: [3, "Concerne les missions renouvelables (jusqu'à 2 avenants légaux)"], i: [2, "Évite une perte de continuité, impact business indirect mais réel"], c: ["75%", "Règle métier simple, faible incertitude"], e: [1, "Aucun nouveau modèle IA, juste une règle + rappel automatisé"] },
-      score: 4.5,
-      strategic: { comp: [2, "Fonctionnalité utile mais peu différenciante"], client: [3, "Évite une rupture de mission perçue comme un manque de suivi"] }
-    },
-    {
-      rank: 4, tier: "med", title: "Bot de structuration du besoin", step: "Déclaration du besoin",
+      rank: 3, tier: "high", title: "Bot de structuration du besoin", step: "Captation / Déclaration du besoin",
       desc: "Étendre le bot texte déjà en production (version vocale en cours) pour structurer intégralement le besoin client dès la première interaction, sans aller-retour téléphonique.",
       example: "Sophie décrit son besoin en langage naturel (\"15 caristes pour le pic de Noël\"), le bot restitue une fiche structurée (CACES, dates, volume) en moins de 15 minutes.",
       roiLabel: "Charge −100% sur l'étape", roiSub: "2 → 0, délai −3,5h",
       rice: { r: [5, "Chaque commande client passe par cette étape"], i: [2, "Étape déjà la plus légère, gain marginal en valeur absolue"], c: ["80%", "Bot texte déjà en production, version vocale en cours"], e: [2, "Extension d'un outil existant"] },
       score: 4.0,
       strategic: { comp: [2, "Peu différenciant en soi, mais fluidifie l'entrée du funnel"], client: [5, "Premier point de contact — donne le ton de toute la relation"] }
+    },
+    {
+      rank: 4, tier: "med", title: "Continuité de mission intégrée à la Captation du besoin", step: "Captation / Déclaration du besoin",
+      desc: "Réintègre le renouvellement dans la Captation plutôt qu'en périphérie du funnel : à l'approche de la fin de mission, la déclaration du besoin bascule en mode continuité. Deux confirmations indépendantes se croisent — le client choisit de garder l'intérimaire en poste ou de rouvrir une recherche ; l'intérimaire confirme ou décline sa disponibilité à poursuivre.",
+      example: "Cinq jours avant la fin de la mission de Karim, Sophie reçoit \"Garder Karim, ou repartir sur un nouveau profil ?\" ; en parallèle, Karim reçoit \"Toujours disponible pour continuer ?\". Deux oui → avenant généré automatiquement. Un non de part ou d'autre → une déclaration de besoin classique s'ouvre déjà pré-remplie, sans repartir de zéro.",
+      roiLabel: "Anticipe les désistements", roiSub: "Détecté 5j avant la fin, pas le jour J",
+      rice: { r: [4, "Concerne toute mission arrivant à échéance, renouvelée ou non"], i: [3, "Anticipe un désistement côté intérimaire avant la rupture, pas de surprise pour le client"], c: ["65%", "Confirmation bilatérale plus complexe qu'une simple alerte, non testée"], e: [2, "Flux de confirmation à deux voix à construire, pas seulement une règle + rappel"] },
+      score: 3.9,
+      strategic: { comp: [3, "Peu d'acteurs formalisent une confirmation bilatérale explicite à ce point du funnel"], client: [4, "Le client choisit activement plutôt que de subir un renouvellement tacite ou une rupture"] }
     },
     {
       rank: 5, tier: "med", title: "Score explicatif du matching (badges)", step: "Qualification / entretien",
