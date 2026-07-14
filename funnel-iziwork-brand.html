@@ -1,4 +1,4 @@
-<title>Iziwork — Funnel Staffing, Avant / Maintenant / Après</title>
+<title>Iziwork : Funnel Staffing, Avant / Maintenant / Après</title>
 <style>
   :root {
     --navy: #272356;
@@ -454,7 +454,7 @@
     <div class="rail-outer">
       <div class="rail-inner">
 
-        <p class="row-caption">→ Délai cumulé de staffing (besoin déclaré → signature)<span class="info-badge" tabindex="0" aria-label="Comment ce délai est estimé">i<span class="info-tip"><b>Comment ce délai est estimé.</b> Somme des temps de traitement estimés à chaque étape. Le segment Sourcing s'appuie sur une donnée publique (IZIOnSite : 95% des besoins couverts en 24h) ; les autres segments n'ont pas de source publique sur leurs sous-délais précis — ce sont des hypothèses de travail raisonnées, à confronter à la réalité du terrain en entretien.</span></span></p>
+        <p class="row-caption">→ Délai cumulé de staffing (besoin déclaré → signature)<span class="info-badge" tabindex="0" aria-label="Comment ce délai est estimé">i<span class="info-tip"><b>Comment ce délai est estimé.</b> Somme des temps de traitement estimés à chaque étape. Le segment Sourcing s'appuie sur une donnée publique (IZIOnSite : 95% des besoins couverts en 24h) ; les autres segments n'ont pas de source publique sur leurs sous-délais précis : ce sont des hypothèses de travail raisonnées, à confronter à la réalité du terrain en entretien.</span></span></p>
         <div class="multichart">
           <div class="gcell-empty"></div>
           <div class="plot-delay" id="plot-delay">
@@ -469,7 +469,7 @@
           </div>
         </div>
 
-        <p class="row-caption">↑ Charge manuelle (0–5)<span class="info-badge" tabindex="0" aria-label="Comment ce score est calculé">i<span class="info-tip"><b>Comment ce score est estimé.</b> Échelle qualitative relative de 0 (aucun effort manuel) à 5 (charge la plus lourde), établie par comparaison entre étapes à partir des frictions déjà sourcées dans le cadrage du problème (volume de CV, ressaisie de documents, etc.) et du niveau d'automatisation propre à chaque état. Ce n'est pas une mesure chronométrée ni un audit de temps réel.</span></span></p>
+        <p class="row-caption">↑ Charge manuelle (0-5)<span class="info-badge" tabindex="0" aria-label="Comment ce score est calculé">i<span class="info-tip"><b>Comment ce score est estimé.</b> Échelle qualitative relative de 0 (aucun effort manuel) à 5 (charge la plus lourde), établie par comparaison entre étapes à partir des frictions déjà sourcées dans le cadrage du problème (volume de CV, ressaisie de documents, etc.) et du niveau d'automatisation propre à chaque état. Ce n'est pas une mesure chronométrée ni un audit de temps réel.</span></span></p>
         <div class="multichart">
           <div class="yaxis">
             <span class="ytick" style="bottom:0px;">0</span>
@@ -493,7 +493,7 @@
             <div class="bar-col"><div class="bar" id="bar-4" tabindex="0"><span class="bar-value" id="val-4"></span></div></div>
           </div>
         </div>
-        <p class="row-caption">◆ Qualité perçue côté client (0–5) — survolez une étape</p>
+        <p class="row-caption">◆ Qualité perçue côté client (0-5), survolez une étape</p>
         <div class="multichart">
           <div class="gcell-empty"></div>
           <div class="plot-quality" id="plot-quality">
@@ -542,9 +542,9 @@
 
   <div class="opp-section">
     <div class="opp-head">
-      <h2>🎯 Backlog d'opportunités IA — priorisation</h2>
+      <h2>🎯 Backlog d'opportunités IA : priorisation</h2>
       <p>Priorisé par score RICE (Reach × Impact × Confidence ÷ Effort), complété par deux facteurs stratégiques
-      — avantage concurrentiel et perception client — visibles au clic sur le rang. Le RICE seul sous-pondère
+      , avantage concurrentiel et perception client, visibles au clic sur le rang. Le RICE seul sous-pondère
       la valeur stratégique de long terme : c'est pourquoi ces deux facteurs sont affichés séparément plutôt que
       injectés dans le score, pour rester arbitrables en comité produit.</p>
     </div>
@@ -553,22 +553,22 @@
 
   <div class="wire-section">
     <div class="wire-head">
-      <h2>🧪 Prototype — Explicabilité du score de matching</h2>
+      <h2>🧪 Prototype : Explicabilité du score de matching</h2>
       <p>Traduction concrète de l'opportunité #5 du backlog (Score explicatif du matching) et de l'axe 2 de la
-      réflexion solutions : deux wireframes basse-fidélité pour valider la structure avant tout écran définitif —
+      réflexion solutions : deux wireframes basse-fidélité pour valider la structure avant tout écran définitif :
       l'affichage du score sur un profil recommandé, et le parcours de correction quand le recruteur refuse un
       candidat fortement recommandé.</p>
     </div>
 
     <div class="wire-block">
       <span class="wire-tag">◫ Wireframe A</span>
-      <p class="wire-title">Fiche candidat recommandée — score explicatif</p>
+      <p class="wire-title">Fiche candidat recommandée : score explicatif</p>
       <div class="wire-canvas">
         <div class="mock-card">
           <div class="mock-row">
             <div class="mock-avatar"></div>
             <div>
-              <div class="mock-name">Karim B. — Cariste CACES 3 / 5</div>
+              <div class="mock-name">Karim B., Cariste CACES 3 / 5</div>
               <div class="mock-sub">Profil déjà actif · dernière mission il y a 2 mois</div>
             </div>
           </div>
@@ -584,8 +584,8 @@
           </div>
         </div>
         <ul class="wire-legend">
-          <li><span class="wire-num">2</span> Aucun pourcentage brut affiché seul : le score est toujours porté par ses facteurs constitutifs, en langage métier — décision déjà tranchée à l'axe 2.</li>
-          <li><span class="wire-num">1</span> Badge visuellement distinct quand la donnée sous-jacente est fragile ou ancienne — évite la sur-confiance du recruteur dans un facteur peu fiable.</li>
+          <li><span class="wire-num">2</span> Aucun pourcentage brut affiché seul : le score est toujours porté par ses facteurs constitutifs, en langage métier, décision déjà tranchée à l'axe 2.</li>
+          <li><span class="wire-num">1</span> Badge visuellement distinct quand la donnée sous-jacente est fragile ou ancienne, évite la sur-confiance du recruteur dans un facteur peu fiable.</li>
           <li><span class="wire-num">3</span> Le bouton "Refuser" n'ouvre pas un formulaire séparé : il déclenche directement le wireframe B ci-dessous.</li>
         </ul>
       </div>
@@ -593,7 +593,7 @@
 
     <div class="wire-block">
       <span class="wire-tag">◫ Wireframe B</span>
-      <p class="wire-title">Parcours de correction — refus motivé</p>
+      <p class="wire-title">Parcours de correction : refus motivé</p>
       <div class="wire-canvas">
         <div class="wire-steps">
           <div>
@@ -632,16 +632,16 @@
             <div class="wire-step-label">3 · Boucle fermée</div>
             <div class="mock-card" style="max-width:none;">
               <div class="mock-toast">
-                <b>Merci — c'est pris en compte</b>
+                <b>Merci, c'est pris en compte</b>
                 Ce retour ajuste le critère "CACES à jour" pour les prochaines missions similaires.
               </div>
-              <div class="mock-trace">🔒 Trace conservée <span class="wire-num">3</span> — supervision humaine (AI Act art. 26)</div>
+              <div class="mock-trace">🔒 Trace conservée <span class="wire-num">3</span> : supervision humaine (AI Act art. 26)</div>
             </div>
           </div>
         </div>
         <ul class="wire-legend">
           <li><span class="wire-num">1</span> Les mêmes badges de l'étape 1 réapparaissent pré-cochés : le recruteur décoche seulement celui qu'il juge faux, aucune ressaisie.</li>
-          <li><span class="wire-num">2</span> Un motif rapide en 1 tap (pas de champ libre obligatoire) — au-delà de 85% de score, ce mini-écran devient obligatoire avant confirmation (trace d'audit).</li>
+          <li><span class="wire-num">2</span> Un motif rapide en 1 tap (pas de champ libre obligatoire), au-delà de 85% de score, ce mini-écran devient obligatoire avant confirmation (trace d'audit).</li>
           <li><span class="wire-num">3</span> La boucle est fermée explicitement : le recruteur voit que sa correction a un effet, sinon il cesse de corriger et la boucle de feedback (axe 3) s'assèche.</li>
         </ul>
       </div>
@@ -650,7 +650,7 @@
 
   <div class="deploy-section">
     <div class="deploy-head">
-      <h2>🗺️ Stratégie de déploiement — explicabilité, correction, renforcement</h2>
+      <h2>🗺️ Stratégie de déploiement : explicabilité, correction, renforcement</h2>
       <p>Les trois briques des wireframes ci-dessus (score explicatif, capture de correction, renforcement de
       l'algorithme) ne se déploient pas d'un bloc : chacune avance à son propre rythme, la plus risquée
       (renforcement automatique) restant sous supervision humaine jusqu'à preuve de fiabilité.</p>
@@ -674,12 +674,12 @@
           </div>
           <div class="deploy-cap">
             <span class="dot reinforce"></span>
-            <div><div class="ck">Renforcement algo</div><div class="cv">Aucun — collecte du signal uniquement, pas de réentraînement.</div></div>
+            <div><div class="ck">Renforcement algo</div><div class="cv">Aucun : collecte du signal uniquement, pas de réentraînement.</div></div>
           </div>
 
           <div class="deploy-foot">
             <div class="deploy-gate"><b>✓ Passage</b><span>≥70% des recruteurs comprennent le score sans explication complémentaire ; correction capturée sur &gt;50% des refus.</span></div>
-            <div class="deploy-risk"><b>⚠ Risque</b><span>Signal de correction trop bruité sans motif — à détecter avant de construire la boucle de réentraînement.</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Signal de correction trop bruité sans motif, à détecter avant de construire la boucle de réentraînement.</span></div>
           </div>
         </div>
 
@@ -705,7 +705,7 @@
 
           <div class="deploy-foot">
             <div class="deploy-gate"><b>✓ Passage</b><span>Aucune dérive détectée sur le KPI diversité pendant 4 semaines consécutives ; adoption du motif &gt;80%.</span></div>
-            <div class="deploy-risk"><b>⚠ Risque</b><span>Boucle qui favorise les profils déjà populaires (cold-start négatif) — surveillé via le KPI diversité (axe 3).</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Boucle qui favorise les profils déjà populaires (cold-start négatif), surveillé via le KPI diversité (axe 3).</span></div>
           </div>
         </div>
 
@@ -730,8 +730,8 @@
           </div>
 
           <div class="deploy-foot">
-            <div class="deploy-gate"><b>✓ Conformité</b><span>Audit trimestriel du modèle + traçabilité complète des corrections — prêt avant l'échéance AI Act de déc. 2027.</span></div>
-            <div class="deploy-risk"><b>⚠ Risque</b><span>Dérive silencieuse du modèle dans le temps sans alerte — d'où l'audit trimestriel obligatoire, pas optionnel.</span></div>
+            <div class="deploy-gate"><b>✓ Conformité</b><span>Audit trimestriel du modèle + traçabilité complète des corrections, prêt avant l'échéance AI Act de déc. 2027.</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Dérive silencieuse du modèle dans le temps sans alerte, d'où l'audit trimestriel obligatoire, pas optionnel.</span></div>
           </div>
         </div>
 
@@ -763,20 +763,20 @@
       delay: [4, 48, 24, 24, 24],
       quality: [2, 2, 3, 2, 2],
       steps: [
-        { value: 2, acteurs: "Client (oral/écrit), recruteur (réception)", outils: "Téléphone, email, formulaire papier", donnees: "Aucune — besoin noté à la main", friction: "Besoin flou, critères incomplets (CACES, niveau)", risque: "Erreur de saisie, besoin mal compris en aval" },
+        { value: 2, acteurs: "Client (oral/écrit), recruteur (réception)", outils: "Téléphone, email, formulaire papier", donnees: "Aucune, besoin noté à la main", friction: "Besoin flou, critères incomplets (CACES, niveau)", risque: "Erreur de saisie, besoin mal compris en aval" },
         { value: 5, acteurs: "Recruteur, Partner terrain", outils: "Base CV interne, job boards, Excel dispo", donnees: "CV non structurés, mémoire du recruteur", friction: "Tri manuel de centaines de CV, doublons", risque: "Bons profils non détectés, biais du recruteur" },
         { value: 3, acteurs: "Recruteur, candidat intérimaire", outils: "Téléphone/visio, grille d'entretien papier", donnees: "Déclaratif du candidat, non vérifié", friction: "Ré-évaluation systématique, même profil déjà connu", risque: "Subjectivité, incohérence entre recruteurs" },
-        { value: 4, acteurs: "Recruteur, candidat", outils: "Email, classeur papier ou partagé", donnees: "Pièces envoyées, aucune vérif. automatique", friction: "Pièces manquantes/périmées détectées trop tard", risque: "Mise en poste avec document invalide — responsabilité ETT" },
+        { value: 4, acteurs: "Recruteur, candidat", outils: "Email, classeur papier ou partagé", donnees: "Pièces envoyées, aucune vérif. automatique", friction: "Pièces manquantes/périmées détectées trop tard", risque: "Mise en poste avec document invalide, responsabilité ETT" },
         { value: 3, acteurs: "Recruteur, intérimaire, client", outils: "PDF ou papier, email, fax", donnees: "Ressaisie manuelle depuis les étapes précédentes", friction: "Aller-retour de signature, erreurs de recopie", risque: "Délai légal de transmission du contrat non tenu" }
       ]
     },
     maintenant: {
-      eyebrow: "Aujourd'hui — outils digitaux non-IA, données structurées",
+      eyebrow: "Aujourd'hui : outils digitaux non-IA, données structurées",
       badge: "Portail, appli, signature électronique",
       badgeClass: "apres",
       headline: "Le funnel de staffing digitalisé",
       dek: "Mêmes cinq étapes, avec un socle digital sans briques IA.",
-      footnote: "Vue “Maintenant” : portail entreprises, application mobile, signature électronique — des outils non-IA déjà en production. Le sourcing reste l'étape la plus lourde : la digitalisation attire plus de candidatures mais ne les trie pas.",
+      footnote: "Vue “Maintenant” : portail entreprises, application mobile, signature électronique, des outils non-IA déjà en production. Le sourcing reste l'étape la plus lourde : la digitalisation attire plus de candidatures mais ne les trie pas.",
       delay: [2, 30, 20, 10, 2],
       quality: [3, 3, 3, 3, 4],
       steps: [
@@ -792,8 +792,8 @@
       badge: "Chatbots, matching/scoring, vérification automatisée, OCR",
       badgeClass: "apres",
       headline: "Le funnel de staffing, augmenté par l'IA",
-      dek: "Mêmes cinq étapes, avec l'ensemble des briques IA — celles déjà en production chez Iziwork (chatbot, matching ElasticSearch, vérification d'identité) et celles identifiées comme opportunités dans ce cas pratique, réunies sans distinction ici.",
-      footnote: "Vue “Après” : intègre toutes les briques IA sans distinguer ce qui existe déjà de ce qui reste à construire. La supervision humaine reste obligatoire sur la décision finale (axe 1) — l'IA compresse le délai et la charge, elle ne retire pas le recruteur du processus.",
+      dek: "Mêmes cinq étapes, avec l'ensemble des briques IA : celles déjà en production chez Iziwork (chatbot, matching ElasticSearch, vérification d'identité) et celles identifiées comme opportunités dans ce cas pratique, réunies sans distinction ici.",
+      footnote: "Vue “Après” : intègre toutes les briques IA sans distinguer ce qui existe déjà de ce qui reste à construire. La supervision humaine reste obligatoire sur la décision finale (axe 1) : l'IA compresse le délai et la charge, elle ne retire pas le recruteur du processus.",
       delay: [0.5, 4, 6, 1, 0.5],
       quality: [5, 4, 4, 5, 5],
       steps: [
@@ -956,31 +956,31 @@
   // ---- backlog d'opportunités IA ----
   const OPPORTUNITIES = [
     {
-      rank: 1, tier: "high", title: "Coffre-fort documentaire de l'intérimaire", step: "Transverse — géré en autonomie, hors staffing actif",
+      rank: 1, tier: "high", title: "Coffre-fort documentaire de l'intérimaire", step: "Transverse, géré en autonomie, hors staffing actif",
       desc: "Réinterprète le passeport conformité comme un vrai coffre-fort personnel piloté par l'intérimaire lui-même, géré en continu et indépendamment d'une mission en cours. Dépôt libre des pièces (identité, CACES, visite médicale, RIB...), alertes d'expiration proactives, extraction OCR automatique des dates et informations clés, et validation automatisée des pièces conformes avant même qu'une mission ne le nécessite.",
-      example: "Trois semaines avant l'expiration de son CACES, Karim reçoit une alerte et dépose son renouvellement dès qu'il l'obtient — l'OCR extrait automatiquement la nouvelle date de validité, la pièce est validée sans intervention recruteur. Deux mois plus tard, une nouvelle mission se présente : aucune pièce à redemander.",
+      example: "Trois semaines avant l'expiration de son CACES, Karim reçoit une alerte et dépose son renouvellement dès qu'il l'obtient : l'OCR extrait automatiquement la nouvelle date de validité, la pièce est validée sans intervention recruteur. Deux mois plus tard, une nouvelle mission se présente : aucune pièce à redemander.",
       roiLabel: "Zéro re-demande de pièces", roiSub: "Documents valides en continu, pas seulement au moment du staffing",
-      rice: { r: [5, "Concerne l'ensemble du vivier intérimaire en continu, pas seulement les profils en mission active"], i: [3, "Gain de 2 jours déjà mesuré sur le cycle de paie (IZIOnSite) — le coffre-fort étend cette preuve à tout le vivier"], c: ["70%", "La réutilisation de pièces est déjà validée en interne ; OCR et validation automatisée restent des briques neuves à ce périmètre"], e: [2, "S'appuie sur la vérification d'identité par IA déjà en production (2024) ; ajoute stockage, OCR et moteur d'alertes"] },
+      rice: { r: [5, "Concerne l'ensemble du vivier intérimaire en continu, pas seulement les profils en mission active"], i: [3, "Gain de 2 jours déjà mesuré sur le cycle de paie (IZIOnSite), le coffre-fort étend cette preuve à tout le vivier"], c: ["70%", "La réutilisation de pièces est déjà validée en interne ; OCR et validation automatisée restent des briques neuves à ce périmètre"], e: [2, "S'appuie sur la vérification d'identité par IA déjà en production (2024) ; ajoute stockage, OCR et moteur d'alertes"] },
       score: 5.3,
-      strategic: { comp: [4, "Un coffre-fort autonome et permanent, actif même hors staffing, est plus difficile à répliquer qu'une simple réutilisation ponctuelle de pièces"], client: [4, "Réduit les relances de documents côté client — un profil coffre-fort arrive déjà 100% conforme"] }
+      strategic: { comp: [4, "Un coffre-fort autonome et permanent, actif même hors staffing, est plus difficile à répliquer qu'une simple réutilisation ponctuelle de pièces"], client: [4, "Réduit les relances de documents côté client, un profil coffre-fort arrive déjà 100% conforme"] }
     },
     {
       rank: 2, tier: "high", title: "Fraîcheur du profil pilotée par le bot (renforcement du matching)", step: "Sourcing / matching",
-      desc: "Le profil intérimaire (compétences, disponibilité, historique) alimente déjà ElasticSearch quel que soit le canal de saisie — ce n'est pas nouveau. Ce que le bot renforce spécifiquement : maintenir ce profil à jour et complet en continu, plutôt que de dépendre d'une saisie figée à l'inscription. Reconfirmation active des champs volatils, relance ciblée sur les champs manquants, et capture de signal lors d'échanges de support — sans nouveau formulaire dédié.",
-      example: "Pour 15 postes de cariste, Léa reçoit une liste pré-triée de 20 profils pertinents au lieu de devoir dépouiller 340 candidatures brutes — pertinente parce que la disponibilité et les habilitations affichées sont à jour de la semaine, pas du jour d'inscription il y a huit mois.",
+      desc: "Le profil intérimaire (compétences, disponibilité, historique) alimente déjà ElasticSearch quel que soit le canal de saisie. Ce n'est pas nouveau. Ce que le bot renforce spécifiquement : maintenir ce profil à jour et complet en continu, plutôt que de dépendre d'une saisie figée à l'inscription. Reconfirmation active des champs volatils, relance ciblée sur les champs manquants, et capture de signal lors d'échanges de support, sans nouveau formulaire dédié.",
+      example: "Pour 15 postes de cariste, Léa reçoit une liste pré-triée de 20 profils pertinents au lieu de devoir dépouiller 340 candidatures brutes, pertinente parce que la disponibilité et les habilitations affichées sont à jour de la semaine, pas du jour d'inscription il y a huit mois.",
       roiLabel: "Charge −60% sur l'étape", roiSub: "5 → 2, délai funnel −44h cumulées",
       rice: { r: [5, "Concerne 100% des missions, étape la plus fréquentée"], i: [3, "Déjà prouvé : gain de 40% de temps sur le recrutement (IZIOnSite)"], c: ["90%", "Preuve de production existante"], e: [3, "Ajustement de pondération sur l'existant, pas de nouvelle infra"] },
       score: 4.5,
       strategic: { comp: [4, "C'est l'axe où l'avance actuelle d'Iziwork est la plus réelle"], client: [4, "Profils plus pertinents dès la première proposition"] },
       dataNote: {
-        intro: "Ces champs constituent le profil intérimaire déjà exploité par ElasticSearch, quel que soit le canal de saisie — la question n'est pas \"quelles données existent\" mais \"ce que le bot ajoute spécifiquement\" à leur fraîcheur et leur complétude.",
+        intro: "Ces champs constituent le profil intérimaire déjà exploité par ElasticSearch, quel que soit le canal de saisie : la question n'est pas \"quelles données existent\" mais \"ce que le bot ajoute spécifiquement\" à leur fraîcheur et leur complétude.",
         cats: [
-          { l: "A", t: "<b>Compétences & habilitations</b> — signal fort, stable. Métiers/expérience, certifications précises (CACES par catégorie, habilitations électriques, permis), dates d'obtention/expiration reliées au coffre-fort documentaire (opportunité #1)." },
-          { l: "B", t: "<b>Disponibilité & mobilité</b> — signal fort, volatile. Dispo immédiate/différée, créneaux, zone de mobilité et moyen de transport réel (un rayon km ne dit rien sans savoir si la personne a un véhicule). Le champ le plus périssable du profil." },
-          { l: "C", t: "<b>Historique comportemental interne</b> — signal fort, déjà en base. Missions précédentes, taux de réponse aux sollicitations." },
-          { l: "D", t: "<b>Préférences déclarées</b> — signal moyen. Secteurs préférés/à éviter, type de structure (petite boîte vs grand site)." },
+          { l: "A", t: "<b>Compétences & habilitations</b> : signal fort, stable. Métiers/expérience, certifications précises (CACES par catégorie, habilitations électriques, permis), dates d'obtention/expiration reliées au coffre-fort documentaire (opportunité #1)." },
+          { l: "B", t: "<b>Disponibilité & mobilité</b> : signal fort, volatile. Dispo immédiate/différée, créneaux, zone de mobilité et moyen de transport réel (un rayon km ne dit rien sans savoir si la personne a un véhicule). Le champ le plus périssable du profil." },
+          { l: "C", t: "<b>Historique comportemental interne</b> : signal fort, déjà en base. Missions précédentes, taux de réponse aux sollicitations." },
+          { l: "D", t: "<b>Préférences déclarées</b> : signal moyen. Secteurs préférés/à éviter, type de structure (petite boîte vs grand site)." },
           { l: "★", t: "<b>Apport spécifique du bot.</b> Pas de nouvelle catégorie de donnée, mais une fraîcheur qu'un formulaire figé ne garantit pas : reconfirmation active de la disponibilité (B) à intervalles réguliers, relance ciblée sur un champ manquant ou ambigu (ex. catégorie CACES non précisée), capture de signal lors d'échanges de support sans formulaire dédié, et réindexation quasi immédiate après une mise à jour conversationnelle plutôt qu'un traitement en batch." },
-          { l: "!", t: "<b>Hors critère de matching — risque légal.</b> Âge, situation familiale, santé détaillée, apparence, origine : jamais un facteur de score (Code du travail art. L1132-1). Un signal implicite capté en conversation libre (ex. mention d'enfants) reste une contrainte de disponibilité déclarée, jamais stocké au-delà (RGPD art. 5, minimisation).", risk: true }
+          { l: "!", t: "<b>Hors critère de matching : risque légal.</b> Âge, situation familiale, santé détaillée, apparence, origine : jamais un facteur de score (Code du travail art. L1132-1). Un signal implicite capté en conversation libre (ex. mention d'enfants) reste une contrainte de disponibilité déclarée, jamais stocké au-delà (RGPD art. 5, minimisation).", risk: true }
         ]
       }
     },
@@ -991,11 +991,11 @@
       roiLabel: "Charge −100% sur l'étape", roiSub: "2 → 0, délai −3,5h",
       rice: { r: [5, "Chaque commande client passe par cette étape"], i: [2, "Étape déjà la plus légère, gain marginal en valeur absolue"], c: ["80%", "Bot texte déjà en production, version vocale en cours"], e: [2, "Extension d'un outil existant"] },
       score: 4.0,
-      strategic: { comp: [2, "Peu différenciant en soi, mais fluidifie l'entrée du funnel"], client: [5, "Premier point de contact — donne le ton de toute la relation"] }
+      strategic: { comp: [2, "Peu différenciant en soi, mais fluidifie l'entrée du funnel"], client: [5, "Premier point de contact, donne le ton de toute la relation"] }
     },
     {
       rank: 4, tier: "med", title: "Continuité de mission intégrée à la Captation du besoin", step: "Captation / Déclaration du besoin",
-      desc: "Réintègre le renouvellement dans la Captation plutôt qu'en périphérie du funnel : à l'approche de la fin de mission, la déclaration du besoin bascule en mode continuité. Deux confirmations indépendantes se croisent — le client choisit de garder l'intérimaire en poste ou de rouvrir une recherche ; l'intérimaire confirme ou décline sa disponibilité à poursuivre.",
+      desc: "Réintègre le renouvellement dans la Captation plutôt qu'en périphérie du funnel : à l'approche de la fin de mission, la déclaration du besoin bascule en mode continuité. Deux confirmations indépendantes se croisent : le client choisit de garder l'intérimaire en poste ou de rouvrir une recherche ; l'intérimaire confirme ou décline sa disponibilité à poursuivre.",
       example: "Cinq jours avant la fin de la mission de Karim, Sophie reçoit \"Garder Karim, ou repartir sur un nouveau profil ?\" ; en parallèle, Karim reçoit \"Toujours disponible pour continuer ?\". Deux oui → avenant généré automatiquement. Un non de part ou d'autre → une déclaration de besoin classique s'ouvre déjà pré-remplie, sans repartir de zéro.",
       roiLabel: "Anticipe les désistements", roiSub: "Détecté 5j avant la fin, pas le jour J",
       rice: { r: [4, "Concerne toute mission arrivant à échéance, renouvelée ou non"], i: [3, "Anticipe un désistement côté intérimaire avant la rupture, pas de surprise pour le client"], c: ["65%", "Confirmation bilatérale plus complexe qu'une simple alerte, non testée"], e: [2, "Flux de confirmation à deux voix à construire, pas seulement une règle + rappel"] },
@@ -1023,7 +1023,7 @@
     {
       rank: 7, tier: "low", title: "Boucle de correction recruteur → réentraînement", step: "Sourcing / Qualification (transverse)",
       desc: "Capturer le rejet d'un candidat recommandé en se greffant sur le clic \"Refuser\" déjà naturel du recruteur, pour réentraîner le modèle de matching sans alourdir sa saisie.",
-      example: "Léa décoche le critère faux parmi les badges pré-cochés en 1 tap — ce signal ajuste les pondérations ElasticSearch la nuit suivante.",
+      example: "Léa décoche le critère faux parmi les badges pré-cochés en 1 tap, ce signal ajuste les pondérations ElasticSearch la nuit suivante.",
       roiLabel: "Pas de gain immédiat", roiSub: "Effet cumulatif sur la qualité du matching",
       rice: { r: [5, "Chaque rejet de candidat recommandé, sur toutes les missions"], i: [2, "Amélioration cumulative du matching, pas d'effet immédiat"], c: ["50%", "Dépend de l'adoption réelle du geste de correction par les recruteurs"], e: [3, "Architecture de collecte + boucle de réentraînement à construire"] },
       score: 1.67,
@@ -1059,7 +1059,7 @@
           '<span class="opp-step-tag">' + o.step + '</span>' +
           '<div class="opp-title">' + o.title + '</div>' +
           '<p class="opp-desc">' + o.desc + '</p>' +
-          '<p class="opp-example"><b>Exemple —</b> ' + o.example + '</p>' +
+          '<p class="opp-example"><b>Exemple :</b> ' + o.example + '</p>' +
         '</div>' +
         '<div class="opp-roi"><b>' + o.roiLabel + '</b>' + o.roiSub + '</div>' +
       '</div>' +
@@ -1070,7 +1070,7 @@
         factorHTML("Effort", o.rice.e[0] + "/5", o.rice.e[1]) +
         factorHTML("Avantage concurrentiel", o.strategic.comp[0] + "/5", o.strategic.comp[1]) +
         factorHTML("Perception client", o.strategic.client[0] + "/5", o.strategic.client[1]) +
-        '<div class="opp-factor score"><div class="fk">Score RICE</div><div class="fv">' + o.score + ' — ' + TIER_LABEL[o.tier] + '</div><div class="fd">(Reach × Impact × Confidence) ÷ Effort. Le rang final arbitre les égalités RICE avec la somme des facteurs stratégiques.</div></div>' +
+        '<div class="opp-factor score"><div class="fk">Score RICE</div><div class="fv">' + o.score + ' · ' + TIER_LABEL[o.tier] + '</div><div class="fd">(Reach × Impact × Confidence) ÷ Effort. Le rang final arbitre les égalités RICE avec la somme des facteurs stratégiques.</div></div>' +
         dataNoteHTML(o.dataNote) +
       '</div>';
     const badge = row.querySelector(".opp-badge");
