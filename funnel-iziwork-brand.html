@@ -368,6 +368,11 @@
   .wire-legend { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .wire-legend li { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; line-height: 1.5; color: var(--ink-secondary); }
 
+  .wire-notes { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--hairline-strong, var(--slate)); }
+  .wn-label { font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+  .wire-notes p { font-size: 12.5px; line-height: 1.5; color: var(--ink-secondary); margin: 0 0 8px; }
+  .wire-notes p:last-child { margin-bottom: 0; }
+
   .wire-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; min-width: 900px; }
   .wire-step-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
   .mock-motifs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -542,7 +547,7 @@
 
   <div class="opp-section">
     <div class="opp-head">
-      <h2>🎯 Backlog d'opportunités IA : priorisation</h2>
+      <h2>Backlog d'opportunités IA : priorisation</h2>
       <p>Priorisé par score RICE (Reach × Impact × Confidence ÷ Effort), complété par deux facteurs stratégiques
       , avantage concurrentiel et perception client, visibles au clic sur le rang. Le RICE seul sous-pondère
       la valeur stratégique de long terme : c'est pourquoi ces deux facteurs sont affichés séparément plutôt que
@@ -553,7 +558,7 @@
 
   <div class="wire-section">
     <div class="wire-head">
-      <h2>🧪 Prototype : Explicabilité du score de matching</h2>
+      <h2>Prototype : Explicabilité du score de matching</h2>
       <p>Traduction concrète de l'opportunité #5 du backlog (Score explicatif du matching) et de l'axe 2 de la
       réflexion solutions : deux wireframes basse-fidélité pour valider la structure avant tout écran définitif :
       l'affichage du score sur un profil recommandé, et le parcours de correction quand le recruteur refuse un
@@ -576,18 +581,19 @@
             <span class="mock-badge">Dispo immédiate +30%</span>
             <span class="mock-badge">CACES à jour +20%</span>
             <span class="mock-badge">8 min du site +20%</span>
-            <span class="mock-badge fragile">Exp. 14 mois (donnée fragile) <span class="wire-num">1</span></span>
+            <span class="mock-badge fragile">Exp. 14 mois (donnée fragile)</span>
           </div>
           <div class="mock-actions">
             <button class="mock-btn primary">Proposer au client</button>
             <button class="mock-btn ghost">Refuser</button>
           </div>
         </div>
-        <ul class="wire-legend">
-          <li><span class="wire-num">2</span> Aucun pourcentage brut affiché seul : le score est toujours porté par ses facteurs constitutifs, en langage métier, décision déjà tranchée à l'axe 2.</li>
-          <li><span class="wire-num">1</span> Badge visuellement distinct quand la donnée sous-jacente est fragile ou ancienne, évite la sur-confiance du recruteur dans un facteur peu fiable.</li>
-          <li><span class="wire-num">3</span> Le bouton "Refuser" n'ouvre pas un formulaire séparé : il déclenche directement le wireframe B ci-dessous.</li>
-        </ul>
+        <div class="wire-notes">
+          <div class="wn-label">Notes</div>
+          <p>Aucun pourcentage brut affiché seul : le score est toujours porté par ses facteurs constitutifs, en langage métier, décision déjà tranchée à l'axe 2.</p>
+          <p>Le badge orange signale une donnée sous-jacente fragile ou ancienne, pour éviter la sur-confiance du recruteur dans un facteur peu fiable.</p>
+          <p>Le bouton "Refuser" n'ouvre pas un formulaire séparé : il déclenche directement le wireframe B ci-dessous.</p>
+        </div>
       </div>
     </div>
 
@@ -602,9 +608,15 @@
               <div class="mock-row">
                 <div class="mock-avatar"></div>
                 <div>
-                  <div class="mock-name">Karim B.</div>
-                  <div class="mock-sub">Score 92% affiché</div>
+                  <div class="mock-name">Karim B., Cariste CACES 3 / 5</div>
+                  <div class="mock-sub">Profil déjà actif · dernière mission il y a 2 mois</div>
                 </div>
+              </div>
+              <div class="mock-badges">
+                <span class="mock-badge">Dispo immédiate +30%</span>
+                <span class="mock-badge">CACES à jour +20%</span>
+                <span class="mock-badge">8 min du site +20%</span>
+                <span class="mock-badge fragile">Exp. 14 mois (donnée fragile)</span>
               </div>
               <div class="mock-actions">
                 <button class="mock-btn ghost" style="opacity:.5;">Proposer au client</button>
@@ -619,6 +631,7 @@
                 <span class="mock-badge">☑ Dispo immédiate</span>
                 <span class="mock-badge off">☐ CACES à jour <span class="wire-num">1</span></span>
                 <span class="mock-badge">☑ 8 min du site</span>
+                <span class="mock-badge">☑ Exp. 14 mois</span>
               </div>
               <div class="mock-sub">Motif rapide <span class="wire-num">2</span></div>
               <div class="mock-motifs">
@@ -650,7 +663,7 @@
 
   <div class="deploy-section">
     <div class="deploy-head">
-      <h2>🗺️ Stratégie de déploiement : explicabilité, correction, renforcement</h2>
+      <h2>Stratégie de déploiement : explicabilité, correction, renforcement</h2>
       <p>Les trois briques des wireframes ci-dessus (score explicatif, capture de correction, renforcement de
       l'algorithme) ne se déploient pas d'un bloc : chacune avance à son propre rythme, la plus risquée
       (renforcement automatique) restant sous supervision humaine jusqu'à preuve de fiabilité.</p>
