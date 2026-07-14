@@ -1,0 +1,404 @@
+<title>Funnel Staffing — process manuel (sans IA)</title>
+<style>
+  :root {
+    --surface: #fcfcfb;
+    --surface-raised: #ffffff;
+    --page: #f2f1ec;
+    --ink: #0b0b0b;
+    --ink-secondary: #52514e;
+    --ink-muted: #898781;
+    --hairline: #e1e0d9;
+    --hairline-strong: #c3c2b7;
+
+    --bar-1: #86b6ef; /* charge 2 */
+    --bar-2: #5598e7; /* charge 3 */
+    --bar-3: #2a78d6; /* charge 4 */
+    --bar-4: #184f95; /* charge 5 */
+    --risk: #b23a3a;
+
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface: #1a1a19;
+      --surface-raised: #212120;
+      --page: #0d0d0d;
+      --ink: #ffffff;
+      --ink-secondary: #c3c2b7;
+      --ink-muted: #8f8d87;
+      --hairline: #2c2c2a;
+      --hairline-strong: #383835;
+      --bar-1: rgba(57,135,229,0.42);
+      --bar-2: rgba(57,135,229,0.62);
+      --bar-3: rgba(57,135,229,0.82);
+      --bar-4: #3987e5;
+      --risk: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    --surface: #1a1a19;
+    --surface-raised: #212120;
+    --page: #0d0d0d;
+    --ink: #ffffff;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #8f8d87;
+    --hairline: #2c2c2a;
+    --hairline-strong: #383835;
+    --bar-1: rgba(57,135,229,0.42);
+    --bar-2: rgba(57,135,229,0.62);
+    --bar-3: rgba(57,135,229,0.82);
+    --bar-4: #3987e5;
+    --risk: #e66767;
+  }
+  :root[data-theme="light"] {
+    --surface: #fcfcfb;
+    --surface-raised: #ffffff;
+    --page: #f2f1ec;
+    --ink: #0b0b0b;
+    --ink-secondary: #52514e;
+    --ink-muted: #898781;
+    --hairline: #e1e0d9;
+    --hairline-strong: #c3c2b7;
+    --bar-1: #86b6ef;
+    --bar-2: #5598e7;
+    --bar-3: #2a78d6;
+    --bar-4: #184f95;
+    --risk: #b23a3a;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(24px, 3.2vw, 33px);
+    line-height: 1.15;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .dek {
+    max-width: 68ch;
+    color: var(--ink-secondary);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 6px;
+  }
+  .dek.note {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 30px;
+  }
+
+  .rail-outer {
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+  .rail-inner {
+    min-width: 1180px;
+  }
+
+  /* ---- chart ---- */
+  .chart {
+    display: grid;
+    grid-template-columns: 44px repeat(5, 1fr);
+    column-gap: 20px;
+  }
+  .yaxis {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    height: 260px;
+  }
+  .ytick {
+    position: absolute;
+    right: 10px;
+    transform: translateY(50%);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  .plot {
+    grid-column: 2 / span 5;
+    grid-row: 1;
+    position: relative;
+    height: 260px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+  }
+  .gridline {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--hairline);
+  }
+  .baseline {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--hairline-strong);
+  }
+
+  .bar-col {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1;
+  }
+  .bar {
+    width: 22px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    cursor: default;
+    transition: filter 0.15s ease, outline-color 0.15s ease;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  .bar:hover, .bar:focus-visible {
+    filter: brightness(1.08);
+    outline-color: var(--hairline-strong);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar { transition: none; }
+  }
+  .bar-value {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .xaxis {
+    grid-column: 2 / span 5;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline-strong);
+  }
+  .xlabel {
+    text-align: center;
+  }
+  .xlabel .no {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .xlabel .title {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .axis-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 14px;
+    white-space: nowrap;
+  }
+  .yaxis-wrap { position: relative; }
+
+  /* ---- detail cards ---- */
+  .details {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+    margin-top: 22px;
+    grid-column: 2 / span 5;
+  }
+  .details-row {
+    display: contents;
+  }
+  .dcard {
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 14px 14px 13px;
+  }
+  .dfield {
+    margin-bottom: 9px;
+  }
+  .dfield:last-child { margin-bottom: 0; }
+  .dfield .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 2px;
+  }
+  .dfield .v {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink-secondary);
+  }
+  .dfield.risk .v { color: var(--risk); }
+
+  footer.notes {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 78ch;
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Iziwork — Cas pratique Senior PM · Scope Staffing</p>
+  <h1>Le process manuel, avant toute brique IA</h1>
+  <p class="dek">
+    Reconstruction du parcours tel qu'il se déroulerait sans aucun outil d'intelligence
+    artificielle — cinq étapes seulement, du besoin client à la signature du contrat.
+    En abscisse, la séquence des étapes ; en ordonnée, une évaluation qualitative de la
+    charge manuelle qu'elles imposent au recruteur.
+  </p>
+  <p class="dek note">Évaluation qualitative (échelle 1–5), raisonnée à partir des frictions déjà sourcées dans le cadrage du problème — pas une mesure chronométrée.</p>
+
+  <span class="axis-title">↑ Charge manuelle (0–5, évaluation qualitative)</span>
+
+  <div class="rail-outer">
+    <div class="rail-inner">
+      <div class="chart">
+        <div class="yaxis-wrap" style="grid-column:1; grid-row:1; position:relative;">
+          <div class="yaxis">
+            <span class="ytick" style="bottom:0px;">0</span>
+            <span class="ytick" style="bottom:44px;">1</span>
+            <span class="ytick" style="bottom:88px;">2</span>
+            <span class="ytick" style="bottom:132px;">3</span>
+            <span class="ytick" style="bottom:176px;">4</span>
+            <span class="ytick" style="bottom:220px;">5</span>
+          </div>
+        </div>
+
+        <div class="plot">
+          <div class="gridline" style="bottom:44px;"></div>
+          <div class="gridline" style="bottom:88px;"></div>
+          <div class="gridline" style="bottom:132px;"></div>
+          <div class="gridline" style="bottom:176px;"></div>
+          <div class="gridline" style="bottom:220px;"></div>
+          <div class="baseline"></div>
+
+          <div class="bar-col">
+            <div class="bar" tabindex="0" style="height:88px; background:var(--bar-1);" aria-label="Déclaration du besoin, charge 2 sur 5">
+              <span class="bar-value">2</span>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" tabindex="0" style="height:220px; background:var(--bar-4);" aria-label="Sourcing / matching, charge 5 sur 5">
+              <span class="bar-value">5</span>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" tabindex="0" style="height:132px; background:var(--bar-2);" aria-label="Qualification / entretien, charge 3 sur 5">
+              <span class="bar-value">3</span>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" tabindex="0" style="height:176px; background:var(--bar-3);" aria-label="Validation administrative, charge 4 sur 5">
+              <span class="bar-value">4</span>
+            </div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" tabindex="0" style="height:132px; background:var(--bar-2);" aria-label="Signature du contrat, charge 3 sur 5">
+              <span class="bar-value">3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="xaxis">
+          <div class="xlabel"><span class="no">01</span><span class="title">Déclaration du besoin</span></div>
+          <div class="xlabel"><span class="no">02</span><span class="title">Sourcing / matching</span></div>
+          <div class="xlabel"><span class="no">03</span><span class="title">Qualification / entretien</span></div>
+          <div class="xlabel"><span class="no">04</span><span class="title">Validation administrative</span></div>
+          <div class="xlabel"><span class="no">05</span><span class="title">Signature du contrat</span></div>
+        </div>
+
+        <div class="details">
+          <div class="details-row">
+            <div class="dcard">
+              <div class="dfield"><div class="k">Acteurs</div><div class="v">Client (oral/écrit), recruteur (réception)</div></div>
+              <div class="dfield"><div class="k">Outils</div><div class="v">Téléphone, email, formulaire papier</div></div>
+              <div class="dfield"><div class="k">Données</div><div class="v">Aucune — besoin noté à la main</div></div>
+              <div class="dfield"><div class="k">Friction</div><div class="v">Besoin flou, critères incomplets (CACES, niveau)</div></div>
+              <div class="dfield risk"><div class="k">Risque</div><div class="v">Erreur de saisie, besoin mal compris en aval</div></div>
+            </div>
+            <div class="dcard">
+              <div class="dfield"><div class="k">Acteurs</div><div class="v">Recruteur, Partner terrain</div></div>
+              <div class="dfield"><div class="k">Outils</div><div class="v">Base CV interne, job boards, Excel dispo</div></div>
+              <div class="dfield"><div class="k">Données</div><div class="v">CV non structurés, mémoire du recruteur</div></div>
+              <div class="dfield"><div class="k">Friction</div><div class="v">Tri manuel de centaines de CV, doublons</div></div>
+              <div class="dfield risk"><div class="k">Risque</div><div class="v">Bons profils non détectés, biais du recruteur</div></div>
+            </div>
+            <div class="dcard">
+              <div class="dfield"><div class="k">Acteurs</div><div class="v">Recruteur, candidat intérimaire</div></div>
+              <div class="dfield"><div class="k">Outils</div><div class="v">Téléphone/visio, grille d'entretien papier</div></div>
+              <div class="dfield"><div class="k">Données</div><div class="v">Déclaratif du candidat, non vérifié</div></div>
+              <div class="dfield"><div class="k">Friction</div><div class="v">Ré-évaluation systématique, même profil déjà connu</div></div>
+              <div class="dfield risk"><div class="k">Risque</div><div class="v">Subjectivité, incohérence entre recruteurs</div></div>
+            </div>
+            <div class="dcard">
+              <div class="dfield"><div class="k">Acteurs</div><div class="v">Recruteur, candidat</div></div>
+              <div class="dfield"><div class="k">Outils</div><div class="v">Email, classeur papier ou partagé</div></div>
+              <div class="dfield"><div class="k">Données</div><div class="v">Pièces envoyées, aucune vérif. automatique</div></div>
+              <div class="dfield"><div class="k">Friction</div><div class="v">Pièces manquantes/périmées détectées trop tard</div></div>
+              <div class="dfield risk"><div class="k">Risque</div><div class="v">Mise en poste avec document invalide — responsabilité ETT</div></div>
+            </div>
+            <div class="dcard">
+              <div class="dfield"><div class="k">Acteurs</div><div class="v">Recruteur, intérimaire, client</div></div>
+              <div class="dfield"><div class="k">Outils</div><div class="v">PDF ou papier, email, fax</div></div>
+              <div class="dfield"><div class="k">Données</div><div class="v">Ressaisie manuelle depuis les étapes précédentes</div></div>
+              <div class="dfield"><div class="k">Friction</div><div class="v">Aller-retour de signature, erreurs de recopie</div></div>
+              <div class="dfield risk"><div class="k">Risque</div><div class="v">Délai légal de transmission du contrat non tenu</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="notes">
+    Ce schéma sert de référence "avant" : aucune des briques déjà en place chez Iziwork
+    (chatbot de pré-qualification, matching ElasticSearch, vérification d'identité par IA,
+    signature électronique) n'est représentée ici. Il donne la ligne de base pour mesurer,
+    étape par étape, ce que chaque brique IA fait réellement gagner en charge manuelle.
+  </footer>
+</div>
