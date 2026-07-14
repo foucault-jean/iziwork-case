@@ -436,6 +436,40 @@
   .deploy-phase.ga .deploy-risk b { color: #ffb37a; }
   .deploy-gate span, .deploy-risk span { color: var(--ink-secondary); }
   .deploy-phase.ga .deploy-gate span, .deploy-phase.ga .deploy-risk span { color: var(--ink-on-navy-soft); }
+
+  /* ---- success metrics ---- */
+  .metrics-section { margin-top: 44px; }
+  .metrics-head { margin-bottom: 20px; }
+  .metrics-head h2 { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .metrics-head p { font-size: 13px; line-height: 1.55; color: var(--ink-secondary); max-width: 78ch; margin: 0; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .metrics-cat {
+    background: #fff; border: 1px solid var(--hairline); border-radius: 14px;
+    padding: 16px 18px; box-shadow: 0 6px 18px -16px rgba(39,35,86,0.3);
+  }
+  .metrics-cat-tag {
+    display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .metrics-cat.usage .metrics-cat-tag { background: rgba(64,64,178,0.1); color: var(--indigo); }
+  .metrics-cat.product .metrics-cat-tag { background: rgba(54,204,117,0.14); color: var(--green-dark); }
+  .metrics-cat.model .metrics-cat-tag { background: rgba(255,189,0,0.18); color: #8a6d00; }
+  .metrics-cat.business .metrics-cat-tag { background: rgba(54,204,117,0.14); color: var(--green-dark); }
+  .metrics-cat.risk .metrics-cat-tag { background: rgba(251,115,37,0.12); color: #b8500f; }
+
+  .metric-item { margin-bottom: 11px; padding-bottom: 11px; border-bottom: 1px solid var(--hairline); }
+  .metric-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .metric-name { font-size: 12.5px; font-weight: 800; color: var(--ink); margin-bottom: 3px; }
+  .metric-desc { font-size: 12px; line-height: 1.45; color: var(--ink-secondary); }
+  .metric-target { display: inline-block; font-size: 10px; font-weight: 700; color: var(--slate); margin-top: 4px; }
+
+  .metrics-anti {
+    grid-column: span 2; background: rgba(251,115,37,0.06); border: 1px solid rgba(251,115,37,0.25);
+    border-radius: 14px; padding: 14px 18px;
+  }
+  .metrics-anti .metric-name { color: #b8500f; }
+  .metrics-anti .metric-desc { color: #8a4a1a; }
 </style>
 
 <div class="wrap">
@@ -749,6 +783,108 @@
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <div class="metrics-section">
+    <div class="metrics-head">
+      <h2>Métriques de succès de l'investissement</h2>
+      <p>Ce que le score explicatif, la capture de correction et le renforcement de l'algorithme doivent prouver,
+      au-delà du seul déploiement technique. Aucune de ces métriques n'est suffisante seule : une adoption forte
+      avec un matching qui se dégrade, ou un ROI positif avec une conformité fragile, sont deux façons différentes
+      d'échouer malgré des chiffres qui semblent bons.</p>
+    </div>
+
+    <div class="metrics-grid">
+
+      <div class="metrics-cat usage">
+        <span class="metrics-cat-tag">Usage & adoption</span>
+        <div class="metric-item">
+          <div class="metric-name">Taux de consultation du détail</div>
+          <div class="metric-desc">Part des recommandations où le recruteur ouvre le détail des badges avant de décider, pas seulement le score affiché en tête.</div>
+          <span class="metric-target">Suivi dès MVP</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Taux de correction sur refus</div>
+          <div class="metric-desc">Part des refus d'un candidat fortement recommandé où le geste de correction en 1 tap est utilisé, plutôt qu'un refus silencieux qui n'alimente rien.</div>
+          <span class="metric-target">Cible MVP &gt;50%, Bêta &gt;80% avec motif</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Fréquence d'usage par recruteur</div>
+          <div class="metric-desc">Profils traités avec score explicatif actif, par recruteur et par semaine, pour détecter un abandon silencieux de l'outil.</div>
+        </div>
+      </div>
+
+      <div class="metrics-cat product">
+        <span class="metrics-cat-tag">Qualité produit & UX</span>
+        <div class="metric-item">
+          <div class="metric-name">Compréhension du score</div>
+          <div class="metric-desc">Mesurée en entretien ou sondage recruteur ("je comprends pourquoi ce score"), déjà posée comme critère de passage MVP.</div>
+          <span class="metric-target">Cible ≥70%</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Taux de sur-confiance</div>
+          <div class="metric-desc">Part des validations en masse sans ouverture du détail sur des scores élevés (&gt;85%), signe d'un automatisme aveugle plutôt que d'une décision éclairée.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Taux de rejet de l'outil</div>
+          <div class="metric-desc">Recruteurs qui ignorent systématiquement le score, symétrique du risque de sur-confiance.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Temps de traitement par profil</div>
+          <div class="metric-desc">Avant/après : doit baisser, sinon l'explicabilité ajoute de la charge cognitive au lieu d'en retirer.</div>
+        </div>
+      </div>
+
+      <div class="metrics-cat model">
+        <span class="metrics-cat-tag">Qualité algorithmique</span>
+        <div class="metric-item">
+          <div class="metric-name">Précision du matching dans le temps</div>
+          <div class="metric-desc">Part des profils proposés effectivement retenus par le client : vérifie que le réentraînement améliore la pertinence, pas seulement le volume.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Diversité des profils proposés</div>
+          <div class="metric-desc">Garde-fou contre le biais de popularité déjà identifié : un modèle qui boost toujours les mêmes profils connus plutôt que d'en découvrir de nouveaux est un échec silencieux.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Taux de signal exploitable</div>
+          <div class="metric-desc">Part des corrections avec motif renseigné, par opposition aux corrections brutes trop bruitées pour être intégrées au réentraînement.</div>
+        </div>
+      </div>
+
+      <div class="metrics-cat business">
+        <span class="metrics-cat-tag">Impact business</span>
+        <div class="metric-item">
+          <div class="metric-name">Réduction du temps de qualification</div>
+          <div class="metric-desc">Temps recruteur économisé sur l'étape Qualification grâce au score explicatif, déjà chiffré à −33% sur cette étape (backlog #5).</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">ROI direct de la fonctionnalité</div>
+          <div class="metric-desc">Gain de temps recruteur valorisé (heures économisées × coût horaire chargé) rapporté au coût de build et de run de l'explicabilité, de la correction et du réentraînement.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Rétention du placement à 30 jours</div>
+          <div class="metric-desc">Garde-fou qualité déjà posé à l'axe 3 : si le réentraînement dégrade la pertinence réelle, ce chiffre le révèle malgré un score qui semble convaincant.</div>
+        </div>
+      </div>
+
+      <div class="metrics-cat risk">
+        <span class="metrics-cat-tag">Conformité & risque</span>
+        <div class="metric-item">
+          <div class="metric-name">Taux de traçabilité des décisions</div>
+          <div class="metric-desc">Part des refus sur score élevé (&gt;85%) avec motif tracé : preuve concrète d'une supervision humaine réelle, directement auditable.</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-name">Fréquence de l'audit de biais</div>
+          <div class="metric-desc">Trimestriel dès la GA, avec un délai de détection cible entre une dérive et son signalement.</div>
+        </div>
+      </div>
+
+      <div class="metrics-anti">
+        <div class="metric-name">Anti-métrique à ne jamais utiliser seule</div>
+        <div class="metric-desc">Le taux d'acceptation du score IA par le recruteur ne doit jamais être un indicateur de succès isolé (déjà posé à l'axe 3) : un recruteur peut accepter plus vite sous la pression de l'interface, pas parce que le matching est meilleur. À toujours croiser avec la précision du matching et la rétention à 30 jours.</div>
+      </div>
+
     </div>
   </div>
 </div>
