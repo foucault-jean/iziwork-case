@@ -382,6 +382,55 @@
   }
   .mock-toast b { display: block; margin-bottom: 3px; color: var(--green-dark); font-size: 12.5px; }
   .mock-trace { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 10.5px; color: var(--ink-muted); }
+
+  /* ---- deployment strategy schema ---- */
+  .deploy-section { margin-top: 44px; }
+  .deploy-head { margin-bottom: 20px; }
+  .deploy-head h2 { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .deploy-head p { font-size: 13px; line-height: 1.55; color: var(--ink-secondary); max-width: 78ch; margin: 0; }
+
+  .deploy-track {
+    display: grid; grid-template-columns: 1fr 30px 1fr 30px 1fr; align-items: stretch; gap: 0;
+    min-width: 980px;
+  }
+  .deploy-arrow { display: flex; align-items: center; justify-content: center; color: var(--slate); font-size: 18px; }
+  .deploy-phase {
+    background: #fff; border: 1px solid var(--hairline); border-radius: 16px;
+    padding: 18px 18px 16px; display: flex; flex-direction: column;
+    box-shadow: 0 8px 24px -18px rgba(39,35,86,0.35);
+  }
+  .deploy-phase.ga { background: var(--navy); border-color: var(--navy); }
+  .deploy-tag {
+    display: inline-block; align-self: flex-start; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .deploy-phase:not(.ga) .deploy-tag { background: rgba(64,64,178,0.1); color: var(--indigo); }
+  .deploy-phase.ga .deploy-tag { background: rgba(54,204,117,0.18); color: var(--green); }
+  .deploy-title { font-size: 15.5px; font-weight: 800; color: var(--ink); margin: 0 0 3px; }
+  .deploy-phase.ga .deploy-title { color: #fff; }
+  .deploy-scope { font-size: 11px; color: var(--ink-muted); margin-bottom: 14px; }
+  .deploy-phase.ga .deploy-scope { color: var(--ink-on-navy-soft); }
+
+  .deploy-cap { display: grid; grid-template-columns: 10px 1fr; column-gap: 9px; margin-bottom: 11px; }
+  .deploy-cap .dot { width: 10px; height: 10px; border-radius: 3px; margin-top: 3px; }
+  .deploy-cap .dot.score { background: var(--green); }
+  .deploy-cap .dot.correction { background: var(--indigo); }
+  .deploy-cap .dot.reinforce { background: var(--yellow); }
+  .deploy-cap .ck { font-size: 10px; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase; color: var(--slate); margin-bottom: 2px; }
+  .deploy-phase.ga .deploy-cap .ck { color: var(--ink-on-navy-soft); }
+  .deploy-cap .cv { font-size: 12px; line-height: 1.42; color: var(--ink-secondary); }
+  .deploy-phase.ga .deploy-cap .cv { color: #E8E7F5; }
+
+  .deploy-foot { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--hairline); }
+  .deploy-phase.ga .deploy-foot { border-top-color: rgba(255,255,255,0.15); }
+  .deploy-gate, .deploy-risk { font-size: 11px; line-height: 1.4; margin-bottom: 6px; display: flex; gap: 6px; }
+  .deploy-gate b, .deploy-risk b { flex: none; }
+  .deploy-gate b { color: var(--green-dark); }
+  .deploy-risk b { color: var(--orange); }
+  .deploy-phase.ga .deploy-gate b { color: var(--green); }
+  .deploy-phase.ga .deploy-risk b { color: #ffb37a; }
+  .deploy-gate span, .deploy-risk span { color: var(--ink-secondary); }
+  .deploy-phase.ga .deploy-gate span, .deploy-phase.ga .deploy-risk span { color: var(--ink-on-navy-soft); }
 </style>
 
 <div class="wrap">
@@ -595,6 +644,97 @@
           <li><span class="wire-num">2</span> Un motif rapide en 1 tap (pas de champ libre obligatoire) — au-delà de 85% de score, ce mini-écran devient obligatoire avant confirmation (trace d'audit).</li>
           <li><span class="wire-num">3</span> La boucle est fermée explicitement : le recruteur voit que sa correction a un effet, sinon il cesse de corriger et la boucle de feedback (axe 3) s'assèche.</li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="deploy-section">
+    <div class="deploy-head">
+      <h2>🗺️ Stratégie de déploiement — explicabilité, correction, renforcement</h2>
+      <p>Les trois briques des wireframes ci-dessus (score explicatif, capture de correction, renforcement de
+      l'algorithme) ne se déploient pas d'un bloc : chacune avance à son propre rythme, la plus risquée
+      (renforcement automatique) restant sous supervision humaine jusqu'à preuve de fiabilité.</p>
+    </div>
+
+    <div class="rail-outer">
+      <div class="deploy-track">
+
+        <div class="deploy-phase">
+          <span class="deploy-tag">MVP</span>
+          <p class="deploy-title">Preuve de concept</p>
+          <p class="deploy-scope">1 agence pilote (logistique) · ~5 recruteurs · 4-6 semaines</p>
+
+          <div class="deploy-cap">
+            <span class="dot score"></span>
+            <div><div class="ck">Score explicatif</div><div class="cv">3 badges principaux affichés. Pas encore de badge "donnée fragile".</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot correction"></span>
+            <div><div class="ck">Capture correction</div><div class="cv">Log du badge décoché au clic Refuser. Pas de motif obligatoire.</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot reinforce"></span>
+            <div><div class="ck">Renforcement algo</div><div class="cv">Aucun — collecte du signal uniquement, pas de réentraînement.</div></div>
+          </div>
+
+          <div class="deploy-foot">
+            <div class="deploy-gate"><b>✓ Passage</b><span>≥70% des recruteurs comprennent le score sans explication complémentaire ; correction capturée sur &gt;50% des refus.</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Signal de correction trop bruité sans motif — à détecter avant de construire la boucle de réentraînement.</span></div>
+          </div>
+        </div>
+
+        <div class="deploy-arrow">→</div>
+
+        <div class="deploy-phase">
+          <span class="deploy-tag">Bêta</span>
+          <p class="deploy-title">Validation à l'échelle</p>
+          <p class="deploy-scope">4-5 agences · plusieurs secteurs · 8-12 semaines</p>
+
+          <div class="deploy-cap">
+            <span class="dot score"></span>
+            <div><div class="ck">Score explicatif</div><div class="cv">Ajout du badge "donnée fragile". Copie affinée sur retours MVP.</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot correction"></span>
+            <div><div class="ck">Capture correction</div><div class="cv">Motifs rapides activés (3 tags). Friction obligatoire au-delà de 85% de score.</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot reinforce"></span>
+            <div><div class="ck">Renforcement algo</div><div class="cv">Job batch nightly actif, mais chaque ajustement de pondération passe par une validation humaine avant mise en prod.</div></div>
+          </div>
+
+          <div class="deploy-foot">
+            <div class="deploy-gate"><b>✓ Passage</b><span>Aucune dérive détectée sur le KPI diversité pendant 4 semaines consécutives ; adoption du motif &gt;80%.</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Boucle qui favorise les profils déjà populaires (cold-start négatif) — surveillé via le KPI diversité (axe 3).</span></div>
+          </div>
+        </div>
+
+        <div class="deploy-arrow">→</div>
+
+        <div class="deploy-phase ga">
+          <span class="deploy-tag">General Availability</span>
+          <p class="deploy-title">Régime stable</p>
+          <p class="deploy-scope">Toutes agences · tous secteurs</p>
+
+          <div class="deploy-cap">
+            <span class="dot score"></span>
+            <div><div class="ck">Score explicatif</div><div class="cv">Badges stabilisés, potentiellement personnalisés par secteur.</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot correction"></span>
+            <div><div class="ck">Capture correction</div><div class="cv">Intégrée nativement au flux recruteur standard, sans étape perçue comme additionnelle.</div></div>
+          </div>
+          <div class="deploy-cap">
+            <span class="dot reinforce"></span>
+            <div><div class="ck">Renforcement algo</div><div class="cv">Réentraînement automatique sans validation manuelle, sous monitoring de biais continu.</div></div>
+          </div>
+
+          <div class="deploy-foot">
+            <div class="deploy-gate"><b>✓ Conformité</b><span>Audit trimestriel du modèle + traçabilité complète des corrections — prêt avant l'échéance AI Act de déc. 2027.</span></div>
+            <div class="deploy-risk"><b>⚠ Risque</b><span>Dérive silencieuse du modèle dans le temps sans alerte — d'où l'audit trimestriel obligatoire, pas optionnel.</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
