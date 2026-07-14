@@ -216,8 +216,8 @@
 
   /* ---- detail cards (now shown as a floating tooltip on bar hover) ---- */
   .bar-floating-tip {
-    position: fixed; width: 232px; background: var(--card); border-radius: 14px;
-    padding: 15px 15px 14px; box-shadow: 0 24px 48px -14px rgba(0,0,0,0.5);
+    position: fixed; width: 340px; background: var(--card); border-radius: 14px;
+    padding: 16px 17px 15px; box-shadow: 0 24px 48px -14px rgba(0,0,0,0.5);
     border: 1px solid var(--hairline);
     opacity: 0; pointer-events: none; transform: translate(-50%, calc(-100% - 6px));
     transition: opacity 0.15s ease, transform 0.15s ease;
@@ -405,6 +405,21 @@
     <div class="rail-outer">
       <div class="rail-inner">
 
+        <p class="row-caption">→ Délai cumulé de staffing (besoin déclaré → signature)<span class="info-badge" tabindex="0" aria-label="Comment ce délai est estimé">i<span class="info-tip"><b>Comment ce délai est estimé.</b> Somme des temps de traitement estimés à chaque étape. Le segment Sourcing s'appuie sur une donnée publique (IZIOnSite : 95% des besoins couverts en 24h) ; les autres segments n'ont pas de source publique sur leurs sous-délais précis — ce sont des hypothèses de travail raisonnées, à confronter à la réalité du terrain en entretien.</span></span></p>
+        <div class="multichart">
+          <div class="gcell-empty"></div>
+          <div class="plot-delay" id="plot-delay">
+            <svg class="delay-svg" viewBox="0 0 500 84" preserveAspectRatio="none" aria-hidden="true">
+              <polyline id="delay-line" points="" fill="none" stroke="#7A78D6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            </svg>
+            <div class="delay-col"><div class="delay-dot" id="ddot-0" tabindex="0"></div><div class="delay-label" id="dlab-0"></div></div>
+            <div class="delay-col"><div class="delay-dot" id="ddot-1" tabindex="0"></div><div class="delay-label" id="dlab-1"></div></div>
+            <div class="delay-col"><div class="delay-dot" id="ddot-2" tabindex="0"></div><div class="delay-label" id="dlab-2"></div></div>
+            <div class="delay-col"><div class="delay-dot" id="ddot-3" tabindex="0"></div><div class="delay-label" id="dlab-3"></div></div>
+            <div class="delay-col"><div class="delay-dot" id="ddot-4" tabindex="0"></div><div class="delay-label" id="dlab-4"></div></div>
+          </div>
+        </div>
+
         <p class="row-caption">↑ Charge manuelle (0–5)<span class="info-badge" tabindex="0" aria-label="Comment ce score est calculé">i<span class="info-tip"><b>Comment ce score est estimé.</b> Échelle qualitative relative de 0 (aucun effort manuel) à 5 (charge la plus lourde), établie par comparaison entre étapes à partir des frictions déjà sourcées dans le cadrage du problème (volume de CV, ressaisie de documents, etc.) et du niveau d'automatisation propre à chaque état. Ce n'est pas une mesure chronométrée ni un audit de temps réel.</span></span></p>
         <div class="multichart">
           <div class="yaxis">
@@ -427,21 +442,6 @@
             <div class="bar-col"><div class="bar" id="bar-2" tabindex="0"><span class="bar-value" id="val-2"></span></div></div>
             <div class="bar-col"><div class="bar" id="bar-3" tabindex="0"><span class="bar-value" id="val-3"></span></div></div>
             <div class="bar-col"><div class="bar" id="bar-4" tabindex="0"><span class="bar-value" id="val-4"></span></div></div>
-          </div>
-        </div>
-
-        <p class="row-caption">→ Délai cumulé de staffing (besoin déclaré → signature)<span class="info-badge" tabindex="0" aria-label="Comment ce délai est estimé">i<span class="info-tip"><b>Comment ce délai est estimé.</b> Somme des temps de traitement estimés à chaque étape. Le segment Sourcing s'appuie sur une donnée publique (IZIOnSite : 95% des besoins couverts en 24h) ; les autres segments n'ont pas de source publique sur leurs sous-délais précis — ce sont des hypothèses de travail raisonnées, à confronter à la réalité du terrain en entretien.</span></span></p>
-        <div class="multichart">
-          <div class="gcell-empty"></div>
-          <div class="plot-delay" id="plot-delay">
-            <svg class="delay-svg" viewBox="0 0 500 84" preserveAspectRatio="none" aria-hidden="true">
-              <polyline id="delay-line" points="" fill="none" stroke="#7A78D6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
-            </svg>
-            <div class="delay-col"><div class="delay-dot" id="ddot-0" tabindex="0"></div><div class="delay-label" id="dlab-0"></div></div>
-            <div class="delay-col"><div class="delay-dot" id="ddot-1" tabindex="0"></div><div class="delay-label" id="dlab-1"></div></div>
-            <div class="delay-col"><div class="delay-dot" id="ddot-2" tabindex="0"></div><div class="delay-label" id="dlab-2"></div></div>
-            <div class="delay-col"><div class="delay-dot" id="ddot-3" tabindex="0"></div><div class="delay-label" id="dlab-3"></div></div>
-            <div class="delay-col"><div class="delay-dot" id="ddot-4" tabindex="0"></div><div class="delay-label" id="dlab-4"></div></div>
           </div>
         </div>
         <p class="row-caption">◆ Qualité perçue côté client (0–5) — survolez une étape</p>
@@ -790,7 +790,7 @@
 
   function positionTip(anchorEl) {
     const rect = anchorEl.getBoundingClientRect();
-    const tipWidth = 232;
+    const tipWidth = 340;
     let left = rect.left + rect.width / 2;
     left = Math.max(tipWidth / 2 + 8, Math.min(window.innerWidth - tipWidth / 2 - 8, left));
     floatTip.style.left = left + "px";
