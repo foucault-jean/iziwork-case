@@ -75,7 +75,7 @@
     color: var(--ink-on-navy); box-shadow: 0 20px 40px -20px rgba(39,35,86,0.5);
   }
   .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); font-weight: 700; margin: 0 0 10px; }
-  h1 { font-size: clamp(22px, 2.8vw, 30px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance; font-weight: 800; }
+  h1 { font-size: clamp(22px, 2.8vw, 30px); line-height: 1.15; margin: 0 0 22px; letter-spacing: -0.01em; text-wrap: balance; font-weight: 800; }
   .dek { max-width: 70ch; color: var(--ink-on-navy-soft); font-size: 14px; line-height: 1.5; margin: 0 0 4px; }
   .dek.note { font-size: 12px; color: #8f8bc0; margin-bottom: 24px; }
   .state-badge {
@@ -315,11 +315,8 @@
   </div>
 
   <div class="hero">
-    <p class="eyebrow" id="eyebrow"></p>
     <span class="state-badge" id="state-badge"></span>
     <h1 id="headline"></h1>
-    <p class="dek" id="dek"></p>
-    <p class="dek note">Charge, délai et qualité sont des évaluations qualitatives raisonnées à partir des frictions déjà sourcées dans le cadrage du problème — pas des mesures chronométrées ou une étude de satisfaction réelle.</p>
 
     <div class="rail-outer">
       <div class="rail-inner">
@@ -420,8 +417,6 @@
     </div>
     <div class="opp-list" id="opp-list"></div>
   </div>
-
-  <footer class="notes" id="footnote"></footer>
 </div>
 
 <div class="bar-floating-tip" id="bar-floating-tip"></div>
@@ -525,10 +520,7 @@
   function render(key) {
     const s = STATE[key];
     currentSteps = s.steps;
-    document.getElementById("eyebrow").textContent = s.eyebrow;
     document.getElementById("headline").textContent = s.headline;
-    document.getElementById("dek").textContent = s.dek;
-    document.getElementById("footnote").textContent = s.footnote;
 
     const badge = document.getElementById("state-badge");
     badge.textContent = s.badge;
