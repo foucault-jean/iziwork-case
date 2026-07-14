@@ -399,8 +399,8 @@
           <div class="gcell-empty"></div>
           <div class="xaxis">
             <div class="xlabel"><span class="no">01</span><span class="title">Déclaration du besoin</span></div>
-            <div class="xlabel"><span class="no">02</span><span class="title">Sourcing / matching</span></div>
-            <div class="xlabel"><span class="no">03</span><span class="title">Qualification / entretien<span class="hwarn" tabindex="0" aria-label="Contrôle humain obligatoire sur cette étape">!<span class="hwarn-tip"><b>Supervision humaine obligatoire.</b> La décision finale de qualification ne peut pas être exclusivement automatisée : RGPD art. 22 (en vigueur) et AI Act art. 26 pour les systèmes de scoring à haut risque (Annexe III) imposent une intervention humaine réelle sur cette décision.</span></span></span></div>
+            <div class="xlabel"><span class="no">02</span><span class="title">Sourcing / Matching</span></div>
+            <div class="xlabel"><span class="no">03</span><span class="title">Qualification / Entretien<span class="hwarn" tabindex="0" aria-label="Contrôle humain obligatoire sur cette étape">!<span class="hwarn-tip"><b>Supervision humaine obligatoire.</b> La décision finale de qualification ne peut pas être exclusivement automatisée : RGPD art. 22 (en vigueur) et AI Act art. 26 pour les systèmes de scoring à haut risque (Annexe III) imposent une intervention humaine réelle sur cette décision.</span></span></span></div>
             <div class="xlabel"><span class="no">04</span><span class="title">Validation administrative</span></div>
             <div class="xlabel"><span class="no">05</span><span class="title">Signature du contrat</span></div>
           </div>
@@ -434,14 +434,14 @@
     "Fluidité perçue du processus de conformité (peu ou pas de relances pour des documents).",
     "Facilité et rapidité perçues pour finaliser la mise à disposition."
   ];
-  const STEP_NAMES = ["Déclaration du besoin", "Sourcing / matching", "Qualification / entretien", "Validation administrative", "Signature du contrat"];
+  const STEP_NAMES = ["Déclaration du besoin", "Sourcing / Matching", "Qualification / Entretien", "Validation administrative", "Signature du contrat"];
 
   const STATE = {
     avant: {
-      eyebrow: "Ligne de base — aucun outil",
-      badge: "100% manuel — téléphone, papier, email",
-      badgeClass: "",
-      headline: "Le funnel de staffing, avant tout outil",
+      eyebrow: "Ligne de base ",
+      badge: "Téléphone, formulaire papier, email",
+      badgeClass: "apres",
+      headline: "Le funnel de staffing non-outillé",
       dek: "Cinq étapes du besoin client à la signature du contrat, entièrement manuelles.",
       footnote: "Vue “Avant” : aucune des briques digitales d'Iziwork n'est représentée ici, y compris les outils non-IA. C'est la ligne de base la plus basse.",
       delay: [4, 48, 24, 24, 24],
@@ -456,24 +456,24 @@
     },
     maintenant: {
       eyebrow: "Aujourd'hui — outils digitaux non-IA",
-      badge: "Digitalisé, sans IA — portail, appli, signature électronique",
-      badgeClass: "maintenant",
-      headline: "Le funnel de staffing, avec les outils digitaux d'Iziwork",
-      dek: "Mêmes cinq étapes, avec le socle digital déjà en place — hors briques IA.",
+      badge: "Portail, appli, signature électronique",
+      badgeClass: "apres",
+      headline: "Le funnel de staffing digitalisé",
+      dek: "Mêmes cinq étapes, avec un socle digital sans briques IA.",
       footnote: "Vue “Maintenant” : portail entreprises, application mobile, signature électronique — des outils non-IA déjà en production. Le sourcing reste l'étape la plus lourde : la digitalisation attire plus de candidatures mais ne les trie pas.",
       delay: [2, 30, 20, 10, 2],
       quality: [3, 3, 3, 3, 4],
       steps: [
         { value: 1, acteurs: "Client (oral/écrit), recruteur (réception)", outils: "Portail entreprises clientes (formulaire structuré en ligne)", donnees: "Champs structurés (mission, compétences, dates)", friction: "Champs mal remplis non détectés avant réception", risque: "Ambiguïté persistante sur les critères non standards" },
-        { value: 4, acteurs: "Recruteur, Partner terrain", outils: "ISP (recherche par mots-clés/filtres), job board, appli mobile", donnees: "CV digitalisés et filtrables, historique des missions", friction: "Recherche par mots-clés encore imprécise, volume accru par le job board", risque: "Profils pertinents noyés dans le volume de candidatures" },
+        { value: 4, acteurs: "Recruteur, partner terrain", outils: "ISP (recherche par mots-clés/filtres), job board, appli mobile", donnees: "CV digitalisés et filtrables, historique des missions", friction: "Recherche par mots-clés encore imprécise, volume accru par le job board", risque: "Profils pertinents noyés dans le volume de candidatures" },
         { value: 3, acteurs: "Recruteur, candidat intérimaire", outils: "ISP (compte-rendu structuré), téléphone/visio", donnees: "Fiche candidat digitale, pas de score automatique", friction: "Pas de mémoire structurée exploitable des entretiens passés", risque: "Subjectivité inchangée entre recruteurs" },
         { value: 3, acteurs: "Recruteur, candidat", outils: "Appli mobile (upload photo des pièces), portail", donnees: "Documents numérisés centralisés, pas de vérif. auto", friction: "Pas d'alerte automatique sur pièces expirées", risque: "Mise en poste avec document invalide toujours possible" },
         { value: 1, acteurs: "Recruteur, intérimaire, client", outils: "Signature électronique (application mobile)", donnees: "Contrat pré-rempli depuis les données déjà saisies", friction: "Délai possible si l'application n'est pas consultée aussitôt", risque: "Délai légal de transmission généralement respecté" }
       ]
     },
     apres: {
-      eyebrow: "Avec les briques IA — existantes et à construire",
-      badge: "Augmenté par l'IA — matching, scoring, vérification automatisée",
+      eyebrow: "Chatbots, matching/scoring, vérification d'ID, gestion des justificatifs, boucles d'entrainement",
+      badge: "Le funnel de staffing augmenté par l'IA — matching, scoring, vérification automatisée",
       badgeClass: "apres",
       headline: "Le funnel de staffing, augmenté par l'IA",
       dek: "Mêmes cinq étapes, avec l'ensemble des briques IA — celles déjà en production chez Iziwork (chatbot, matching ElasticSearch, vérification d'identité) et celles identifiées comme opportunités dans ce cas pratique, réunies sans distinction ici.",
