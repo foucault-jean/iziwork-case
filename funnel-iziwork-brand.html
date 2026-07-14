@@ -244,6 +244,14 @@
   .opp-head h2 { font-size: 19px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
   .opp-head p { font-size: 13px; line-height: 1.55; color: var(--ink-secondary); margin: 0; }
 
+  .opp-scroll {
+    max-height: 70vh; overflow-y: auto; overflow-x: hidden;
+    padding: 4px 10px 4px 4px; margin: -4px -10px -4px -4px;
+    border: 1px solid var(--hairline); border-radius: 16px; background: var(--page);
+  }
+  .opp-scroll::-webkit-scrollbar { width: 8px; }
+  .opp-scroll::-webkit-scrollbar-track { background: transparent; }
+  .opp-scroll::-webkit-scrollbar-thumb { background: var(--slate); border-radius: 4px; opacity: 0.5; }
   .opp-list { display: flex; flex-direction: column; gap: 10px; }
   .opp-row {
     background: var(--card); border: 1px solid var(--hairline); border-radius: 14px;
@@ -587,7 +595,9 @@
       la valeur stratégique de long terme : c'est pourquoi ces deux facteurs sont affichés séparément plutôt que
       injectés dans le score, pour rester arbitrables en comité produit.</p>
     </div>
-    <div class="opp-list" id="opp-list"></div>
+    <div class="opp-scroll">
+      <div class="opp-list" id="opp-list"></div>
+    </div>
   </div>
 
   <div class="wire-section">
