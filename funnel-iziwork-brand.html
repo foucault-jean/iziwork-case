@@ -801,13 +801,13 @@
   // ---- backlog d'opportunités IA ----
   const OPPORTUNITIES = [
     {
-      rank: 1, tier: "high", title: "Passeport conformité réutilisable", step: "Validation administrative",
-      desc: "Transformer la priorisation déjà en place (profils actifs) en un vrai passeport : les pièces déjà vérifiées ne sont plus jamais redemandées tant qu'elles restent valides.",
-      example: "Karim a déjà fourni son CACES et sa visite médicale lors d'une mission précédente — à sa nouvelle mission, seule la validité est recontrôlée en 1h au lieu d'une vérification complète.",
-      roiLabel: "Charge −75% sur l'étape", roiSub: "4 → 1, délai −23h",
-      rice: { r: [4, "Concerne la majorité des profils déjà actifs du vivier"], i: [3, "Gain de 2 jours déjà mesuré sur le cycle de paie (IZIOnSite)"], c: ["85%", "Principe déjà en place, simple extension"], e: [2, "Extension d'un mécanisme existant, pas de nouveau modèle"] },
-      score: 5.1,
-      strategic: { comp: [3, "Aligné sur la trajectoire déjà engagée par Iziwork"], client: [4, "Réduit directement les relances de documents, pain sourcé"] }
+      rank: 1, tier: "high", title: "Coffre-fort documentaire de l'intérimaire", step: "Transverse — géré en autonomie, hors staffing actif",
+      desc: "Réinterprète le passeport conformité comme un vrai coffre-fort personnel piloté par l'intérimaire lui-même, géré en continu et indépendamment d'une mission en cours. Dépôt libre des pièces (identité, CACES, visite médicale, RIB...), alertes d'expiration proactives, extraction OCR automatique des dates et informations clés, et validation automatisée des pièces conformes avant même qu'une mission ne le nécessite.",
+      example: "Trois semaines avant l'expiration de son CACES, Karim reçoit une alerte et dépose son renouvellement dès qu'il l'obtient — l'OCR extrait automatiquement la nouvelle date de validité, la pièce est validée sans intervention recruteur. Deux mois plus tard, une nouvelle mission se présente : aucune pièce à redemander.",
+      roiLabel: "Zéro re-demande de pièces", roiSub: "Documents valides en continu, pas seulement au moment du staffing",
+      rice: { r: [5, "Concerne l'ensemble du vivier intérimaire en continu, pas seulement les profils en mission active"], i: [3, "Gain de 2 jours déjà mesuré sur le cycle de paie (IZIOnSite) — le coffre-fort étend cette preuve à tout le vivier"], c: ["70%", "La réutilisation de pièces est déjà validée en interne ; OCR et validation automatisée restent des briques neuves à ce périmètre"], e: [2, "S'appuie sur la vérification d'identité par IA déjà en production (2024) ; ajoute stockage, OCR et moteur d'alertes"] },
+      score: 5.3,
+      strategic: { comp: [4, "Un coffre-fort autonome et permanent, actif même hors staffing, est plus difficile à répliquer qu'une simple réutilisation ponctuelle de pièces"], client: [4, "Réduit les relances de documents côté client — un profil coffre-fort arrive déjà 100% conforme"] }
     },
     {
       rank: 2, tier: "high", title: "Matching prédictif priorisé (renforcement)", step: "Sourcing / matching",
