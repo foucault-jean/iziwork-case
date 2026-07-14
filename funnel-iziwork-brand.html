@@ -399,7 +399,6 @@
   </div>
 
   <div class="hero">
-    <p class="eyebrow" id="eyebrow"></p>
     <span class="state-badge" id="state-badge"></span>
     <h1 id="headline"></h1>
 
@@ -650,7 +649,7 @@
     },
     apres: {
       eyebrow: "Chatbots, matching/scoring, vérification automatisée, OCR",
-      badge: "Le funnel de staffing augmenté par l'IA — matching, scoring, vérification automatisée",
+      badge: "Chatbots, matching/scoring, vérification automatisée, OCR",
       badgeClass: "apres",
       headline: "Le funnel de staffing, augmenté par l'IA",
       dek: "Mêmes cinq étapes, avec l'ensemble des briques IA — celles déjà en production chez Iziwork (chatbot, matching ElasticSearch, vérification d'identité) et celles identifiées comme opportunités dans ce cas pratique, réunies sans distinction ici.",
@@ -702,7 +701,6 @@
   function render(key) {
     const s = STATE[key];
     currentSteps = s.steps;
-    document.getElementById("eyebrow").textContent = s.eyebrow;
     document.getElementById("headline").textContent = s.headline;
 
     const badge = document.getElementById("state-badge");
