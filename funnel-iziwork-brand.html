@@ -825,20 +825,21 @@
       strategic: { comp: [4, "Un coffre-fort autonome et permanent, actif même hors staffing, est plus difficile à répliquer qu'une simple réutilisation ponctuelle de pièces"], client: [4, "Réduit les relances de documents côté client — un profil coffre-fort arrive déjà 100% conforme"] }
     },
     {
-      rank: 2, tier: "high", title: "Matching prédictif priorisé (renforcement)", step: "Sourcing / matching",
-      desc: "Renforcer le moteur ElasticSearch existant avec la donnée du chatbot de pré-qualification et la priorisation des profils actifs, pour réduire le tri manuel sur l'étape la plus lourde du funnel.",
-      example: "Pour 15 postes de cariste, Léa reçoit une liste pré-triée de 20 profils pertinents au lieu de devoir dépouiller 340 candidatures brutes.",
+      rank: 2, tier: "high", title: "Fraîcheur du profil pilotée par le bot (renforcement du matching)", step: "Sourcing / matching",
+      desc: "Le profil intérimaire (compétences, disponibilité, historique) alimente déjà ElasticSearch quel que soit le canal de saisie — ce n'est pas nouveau. Ce que le bot renforce spécifiquement : maintenir ce profil à jour et complet en continu, plutôt que de dépendre d'une saisie figée à l'inscription. Reconfirmation active des champs volatils, relance ciblée sur les champs manquants, et capture de signal lors d'échanges de support — sans nouveau formulaire dédié.",
+      example: "Pour 15 postes de cariste, Léa reçoit une liste pré-triée de 20 profils pertinents au lieu de devoir dépouiller 340 candidatures brutes — pertinente parce que la disponibilité et les habilitations affichées sont à jour de la semaine, pas du jour d'inscription il y a huit mois.",
       roiLabel: "Charge −60% sur l'étape", roiSub: "5 → 2, délai funnel −44h cumulées",
       rice: { r: [5, "Concerne 100% des missions, étape la plus fréquentée"], i: [3, "Déjà prouvé : gain de 40% de temps sur le recrutement (IZIOnSite)"], c: ["90%", "Preuve de production existante"], e: [3, "Ajustement de pondération sur l'existant, pas de nouvelle infra"] },
       score: 4.5,
       strategic: { comp: [4, "C'est l'axe où l'avance actuelle d'Iziwork est la plus réelle"], client: [4, "Profils plus pertinents dès la première proposition"] },
       dataNote: {
-        intro: "Toutes les données collectées par le bot ne se valent pas pour le matching, et certaines ne devraient pas y entrer du tout.",
+        intro: "Ces champs constituent le profil intérimaire déjà exploité par ElasticSearch, quel que soit le canal de saisie — la question n'est pas \"quelles données existent\" mais \"ce que le bot ajoute spécifiquement\" à leur fraîcheur et leur complétude.",
         cats: [
           { l: "A", t: "<b>Compétences & habilitations</b> — signal fort, stable. Métiers/expérience, certifications précises (CACES par catégorie, habilitations électriques, permis), dates d'obtention/expiration reliées au coffre-fort documentaire (opportunité #1)." },
-          { l: "B", t: "<b>Disponibilité & mobilité</b> — signal fort, volatile. Dispo immédiate/différée, créneaux, zone de mobilité et moyen de transport réel (un rayon km ne dit rien sans savoir si la personne a un véhicule). À reconfirmer périodiquement, pas figé à l'inscription." },
-          { l: "C", t: "<b>Historique comportemental interne</b> — signal fort, à exploiter plutôt qu'à redemander. Missions précédentes, taux de réponse aux sollicitations : le bot lit l'historique déjà en base et ne repose que ce qui manque." },
+          { l: "B", t: "<b>Disponibilité & mobilité</b> — signal fort, volatile. Dispo immédiate/différée, créneaux, zone de mobilité et moyen de transport réel (un rayon km ne dit rien sans savoir si la personne a un véhicule). Le champ le plus périssable du profil." },
+          { l: "C", t: "<b>Historique comportemental interne</b> — signal fort, déjà en base. Missions précédentes, taux de réponse aux sollicitations." },
           { l: "D", t: "<b>Préférences déclarées</b> — signal moyen. Secteurs préférés/à éviter, type de structure (petite boîte vs grand site)." },
+          { l: "★", t: "<b>Apport spécifique du bot.</b> Pas de nouvelle catégorie de donnée, mais une fraîcheur qu'un formulaire figé ne garantit pas : reconfirmation active de la disponibilité (B) à intervalles réguliers, relance ciblée sur un champ manquant ou ambigu (ex. catégorie CACES non précisée), capture de signal lors d'échanges de support sans formulaire dédié, et réindexation quasi immédiate après une mise à jour conversationnelle plutôt qu'un traitement en batch." },
           { l: "!", t: "<b>Hors critère de matching — risque légal.</b> Âge, situation familiale, santé détaillée, apparence, origine : jamais un facteur de score (Code du travail art. L1132-1). Un signal implicite capté en conversation libre (ex. mention d'enfants) reste une contrainte de disponibilité déclarée, jamais stocké au-delà (RGPD art. 5, minimisation).", risk: true }
         ]
       }
