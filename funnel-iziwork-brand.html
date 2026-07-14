@@ -399,6 +399,7 @@
   </div>
 
   <div class="hero">
+    <p class="eyebrow" id="eyebrow"></p>
     <span class="state-badge" id="state-badge"></span>
     <h1 id="headline"></h1>
 
@@ -631,7 +632,7 @@
       ]
     },
     maintenant: {
-      eyebrow: "Aujourd'hui — outils digitaux non-IA",
+      eyebrow: "Aujourd'hui — outils digitaux non-IA, données structurées",
       badge: "Portail, appli, signature électronique",
       badgeClass: "apres",
       headline: "Le funnel de staffing digitalisé",
@@ -648,7 +649,7 @@
       ]
     },
     apres: {
-      eyebrow: "Chatbots, matching/scoring, vérification d'ID, gestion des justificatifs, boucles d'entrainement",
+      eyebrow: "Chatbots, matching/scoring, vérification automatisée, OCR",
       badge: "Le funnel de staffing augmenté par l'IA — matching, scoring, vérification automatisée",
       badgeClass: "apres",
       headline: "Le funnel de staffing, augmenté par l'IA",
@@ -701,6 +702,7 @@
   function render(key) {
     const s = STATE[key];
     currentSteps = s.steps;
+    document.getElementById("eyebrow").textContent = s.eyebrow;
     document.getElementById("headline").textContent = s.headline;
 
     const badge = document.getElementById("state-badge");
